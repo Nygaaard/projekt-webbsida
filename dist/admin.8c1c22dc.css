@@ -68,4 +68,61 @@ input[type="submit"]:hover {
   text-align: center;
   margin-top: 10px;
 }
+
+header {
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100px;
+  display: flex;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.menu li {
+  padding: 2rem;
+}
+
+.menu li a {
+  color: #000;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  color: #928181;
+}
+
+footer {
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+.admin-link {
+  text-decoration: none;
+}
+
+.admin-link li, a {
+  list-style: none;
+}
+
+h1 {
+  text-align: center;
+  margin-top: .7rem;
+  margin-bottom: 2.5rem;
+}
+
+.info-div {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.icon {
+  width: 50px;
+  height: 70px;
+}
 /*# sourceMappingURL=admin.8c1c22dc.css.map */

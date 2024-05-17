@@ -9,14 +9,53 @@
   </head>
   <body>
     <header>
+      <a href="index.html">
+        <img src="./images/icon.png" alt="matbild" class="icon" />
+      </a>
       <nav>
-        <ul>
+        <ul class="menu">
           <li><a href="./index.html">Hem</a></li>
           <li><a href="./menu.html">Meny</a></li>
         </ul>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <div>
+        <p>Här kan du som admin registrera ett nytt konto samt uppdatera den befintliga menyn.</p>
+      </div>
+      <div class="form-wrapper">
+        <div class="form-container">
+          <section class="register-section">
+            <h2 class="form-header">Registrera dig</h2>
+            <form method="post" class="register-form">
+              <label for="firstname">Förnamn:</label>
+              <br />
+              <input type="text" id="firstname" name="firstname" />
+              <br />
+              <label for="lastname">Efternamn:</label>
+              <br />
+              <input type="text" id="lastname" name="lastname" />
+              <br />
+              <label for="email">Email:</label>
+              <br />
+              <input type="email" id="email" name="username" />
+              <br />
+              <label for="username">Användarnamn:</label>
+              <br />
+              <input type="text" id="username" name="username" />
+              <br />
+              <label for="password">Lösenord:</label>
+              <br />
+              <input type="password" id="password" name="password" />
+              <br />
+              <input type="submit" id="register" value="Registrera" />
+            </form>
+          </section>
+      </div class="form-wrapper">
+    </div class="form-container">
+      
+      <div id="errMessageReg"></div>
+    </main>
     <footer>
       <div>
         <p>&copy;Andreas Nygård, 2024</p>
@@ -25,7 +64,8 @@
         </p>
       </div>
       <div>
-        <li><a href="./login.html">Administration</a></li>
+        <li><a href="./login.html" class="admin-link">Administration</a></li>
+        <p>Alla bilder är hämtade från Pixabay</p>
       </div>
     </footer>
   </body>
