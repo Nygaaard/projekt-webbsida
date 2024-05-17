@@ -5,8 +5,10 @@ const errMessageLogEl = document.getElementById("errMessageLog");
 const errmessageFailEl = document.getElementById("errMessageFail");
 const errMessage = sessionStorage.getItem("failedLogin");
 
-if (errMessage) {
-  errmessageFailEl.textContent = errMessage;
+if (window.location.pathname.includes("login")) {
+  if (errMessage) {
+    errmessageFailEl.textContent = errMessage;
+  }
 }
 
 export async function loginAdmin(username, password) {
@@ -38,7 +40,6 @@ export async function loginAdmin(username, password) {
       errMessageLogEl.textContent = "Fel användarnamn eller lösenord";
     }
 
-    //Kommentar
     const data = await response.json();
     const token = data.response.token;
     const validate = await validateUser(token);

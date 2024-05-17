@@ -4,5 +4,7 @@
 @use "./layout/footer.scss";
 
 @use "./pages/index.scss";
+@use "./pages/menu.scss";
 
 @use "./components/iconImage.scss";
+@use "./components/errMessage.scss";

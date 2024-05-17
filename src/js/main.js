@@ -1,4 +1,5 @@
 import { loginAdmin } from "./loginAdmin";
+import { displayCourses, displayDrinks } from "./displayMenu";
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login-form");
@@ -6,29 +7,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordLoginEl = document.getElementById("passWordLogin");
   const errorMessageEl = document.getElementById("errMessageLog");
 
-  loginForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  //Display menu if on menu page
+  if (window.location.pathname.includes("menu")) {
+    displayCourses();
+    displayDrinks();
+  }
 
-    const username = userNameLoginEl.value;
-    const password = passwordLoginEl.value;
+  //If on login page
+  if (window.location.pathname.includes("login")) {
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-    // Clear previous error messages
-    errorMessageEl.textContent = "";
+      const username = userNameLoginEl.value;
+      const password = passwordLoginEl.value;
 
-    try {
-      await loginAdmin(username, password);
-    } catch (error) {
-      console.error("Error during login:", error);
-    }
-  });
+      // Clear previous error messages
+      errorMessageEl.textContent = "";
+
+      try {
+        await loginAdmin(username, password);
+      } catch (error) {
+        console.error("Error during login:", error);
+      }
+    });
+  }
 });
-
-// if (authorized) {
-//   try {
-//     const token = localStorage.getItem("token");
-//     const userInfo = await getUserInfo(token);
-//     loginUser(userInfo);
-//   } catch (error) {
-//     console.error("Could not find user information...");
-//   }
-// }

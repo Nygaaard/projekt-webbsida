@@ -585,12 +585,19 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"1SICI":[function(require,module,exports) {
 var _loginAdmin = require("./loginAdmin");
+var _displayMenu = require("./displayMenu");
 document.addEventListener("DOMContentLoaded", ()=>{
     const loginForm = document.getElementById("login-form");
     const userNameLoginEl = document.getElementById("userNameLogin");
     const passwordLoginEl = document.getElementById("passWordLogin");
     const errorMessageEl = document.getElementById("errMessageLog");
-    loginForm.addEventListener("submit", async (event)=>{
+    //Display menu if on menu page
+    if (window.location.pathname.includes("menu")) {
+        (0, _displayMenu.displayCourses)();
+        (0, _displayMenu.displayDrinks)();
+    }
+    //If on login page
+    if (window.location.pathname.includes("login")) loginForm.addEventListener("submit", async (event)=>{
         event.preventDefault();
         const username = userNameLoginEl.value;
         const password = passwordLoginEl.value;
@@ -602,17 +609,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
             console.error("Error during login:", error);
         }
     });
-}); // if (authorized) {
- //   try {
- //     const token = localStorage.getItem("token");
- //     const userInfo = await getUserInfo(token);
- //     loginUser(userInfo);
- //   } catch (error) {
- //     console.error("Could not find user information...");
- //   }
- // }
+});
 
-},{"./loginAdmin":"8Ahzo"}],"8Ahzo":[function(require,module,exports) {
+},{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG"}],"8Ahzo":[function(require,module,exports) {
 //Login admin
 //Variables
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -622,7 +621,9 @@ parcelHelpers.export(exports, "validateUser", ()=>validateUser);
 const errMessageLogEl = document.getElementById("errMessageLog");
 const errmessageFailEl = document.getElementById("errMessageFail");
 const errMessage = sessionStorage.getItem("failedLogin");
-if (errMessage) errmessageFailEl.textContent = errMessage;
+if (window.location.pathname.includes("login")) {
+    if (errMessage) errmessageFailEl.textContent = errMessage;
+}
 async function loginAdmin(username, password) {
     try {
         //If any input field is missing
@@ -644,7 +645,6 @@ async function loginAdmin(username, password) {
         });
         //If wrong username/password
         if (!response.ok) errMessageLogEl.textContent = "Fel anv\xe4ndarnamn eller l\xf6senord";
-        //Kommentar
         const data = await response.json();
         const token = data.response.token;
         const validate = await validateUser(token);
@@ -707,6 +707,97 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["j2YDk","1SICI"], "1SICI", "parcelRequiredfb8")
+},{}],"gUxyG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+//Display courses
+parcelHelpers.export(exports, "displayCourses", ()=>displayCourses);
+//Display drinks
+parcelHelpers.export(exports, "displayDrinks", ()=>displayDrinks);
+var _getData = require("./getData");
+async function displayCourses() {
+    const courses = await (0, _getData.getCourses)();
+    const courseSectionEl = document.getElementById("courseSection");
+    // Create and append course header
+    const courseHeader = document.createElement("h2");
+    courseHeader.textContent = "R\xe4tter";
+    courseSectionEl.appendChild(courseHeader);
+    // Display courses
+    courses.menu.forEach((course)=>{
+        // Create course elements
+        const courseDiv = document.createElement("div");
+        courseDiv.classList.add("menu-item");
+        const courseName = document.createElement("h3");
+        courseName.textContent = course.coursename;
+        const description = document.createElement("p");
+        description.textContent = course.description;
+        const price = document.createElement("span");
+        price.classList.add("price");
+        price.textContent = course.price + " kr";
+        // Append elements to course div
+        courseDiv.appendChild(courseName);
+        courseDiv.appendChild(description);
+        courseDiv.appendChild(price);
+        // Append course div to course section
+        courseSectionEl.appendChild(courseDiv);
+    });
+}
+async function displayDrinks() {
+    const drinks = await (0, _getData.getDrinks)();
+    const drinkSectionEl = document.getElementById("drinkSection");
+    // Create and append drink header
+    const drinkHeader = document.createElement("h2");
+    drinkHeader.textContent = "Dryck";
+    drinkSectionEl.appendChild(drinkHeader);
+    // Display drinks
+    drinks.menu.forEach((drink)=>{
+        // Create drink elements
+        const drinkDiv = document.createElement("div");
+        drinkDiv.classList.add("menu-item");
+        const drinkName = document.createElement("h3");
+        drinkName.textContent = drink.drinkname;
+        const description = document.createElement("p");
+        description.textContent = drink.description;
+        const price = document.createElement("span");
+        price.classList.add("price");
+        price.textContent = drink.price + " kr";
+        // Append elements to drink div
+        drinkDiv.appendChild(drinkName);
+        drinkDiv.appendChild(description);
+        drinkDiv.appendChild(price);
+        // Append drink div to drink section
+        drinkSectionEl.appendChild(drinkDiv);
+    });
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./getData":"7kMqK"}],"7kMqK":[function(require,module,exports) {
+//Get data from courses table
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getCourses", ()=>getCourses);
+//Get data from drinks table
+parcelHelpers.export(exports, "getDrinks", ()=>getDrinks);
+async function getCourses() {
+    const url = "http://localhost:3000/api/courses";
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch  {
+        console.error("Kunde inte h\xe4mta data");
+    }
+}
+async function getDrinks() {
+    const url = "http://localhost:3000/api/drinks";
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch  {
+        console.error("Kunde inte h\xe4mta data");
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["j2YDk","1SICI"], "1SICI", "parcelRequiredfb8")
 
 //# sourceMappingURL=index.18dbc454.js.map
