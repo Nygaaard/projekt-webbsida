@@ -620,9 +620,6 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "loginAdmin", ()=>loginAdmin);
 parcelHelpers.export(exports, "validateUser", ()=>validateUser);
 const errMessageLogEl = document.getElementById("errMessageLog");
-const errmessageFailEl = document.getElementById("errMessageFail");
-const errMessage = sessionStorage.getItem("failedLogin");
-if (errMessage) errmessageFailEl.textContent = errMessage;
 async function loginAdmin(username, password) {
     try {
         //If any input field is missing
@@ -650,14 +647,11 @@ async function loginAdmin(username, password) {
         const validate = await validateUser(token);
         //Validate authorization
         if (validate.message === "Protected route") {
-            sessionStorage.removeItem("failedLogin");
             alert("Du \xe4r inloggad");
             window.location.href = `admin?username=${username}`;
         }
     } catch (error) {
-        errmessageFailEl.textContent = "";
-        sessionStorage.removeItem("failedLogin");
-        errMessageLogEl.textContent = "Fel anv\xe4ndarnamn eller l\xf6senord";
+        errMessageLogEl.textContent = "Fel vid inlogging";
     }
 }
 async function validateUser(token) {
@@ -709,4 +703,4 @@ exports.export = function(dest, destName, get) {
 
 },{}]},["j2YDk","1SICI"], "1SICI", "parcelRequiredfb8")
 
-//# sourceMappingURL=index.18dbc454.js.map
+//# sourceMappingURL=admin.18dbc454.js.map

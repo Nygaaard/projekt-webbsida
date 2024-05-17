@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logga in</title>
+    <link rel="stylesheet" href="css/main.scss" />
+    <script src="js/main.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Hem</a></li>
+          <li><a href="./menu.html">Meny</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="form-wrapper">
+        <div class="form-container">
+          <section class="register-section">
+            <h2 class="form-header">Registrera dig</h2>
+            <form method="post" class="register-form">
+              <label for="firstname">Förnamn:</label>
+              <br />
+              <input type="text" id="firstname" name="firstname" />
+              <br />
+              <label for="lastname">Efternamn:</label>
+              <br />
+              <input type="text" id="lastname" name="lastname" />
+              <br />
+              <label for="email">Email:</label>
+              <br />
+              <input type="email" id="email" name="username" />
+              <br />
+              <label for="username">Användarnamn:</label>
+              <br />
+              <input type="text" id="username" name="username" />
+              <br />
+              <label for="password">Lösenord:</label>
+              <br />
+              <input type="password" id="password" name="password" />
+              <br />
+              <input type="submit" id="register" value="Registrera" />
+            </form>
+          </section>
+          <div id="errMessageReg"></div>
+          <section class="login-section">
+            <h2 class="form-header">Logga in</h2>
+            <form action="post" class="login-form" id="login-form">
+              <label for="userName">Användarnamn:</label>
+              <br />
+              <input type="text" id="userNameLogin" name="userName" />
+              <br />
+              <label for="passWord">Lösenord:</label>
+              <br />
+              <input type="passWord" id="passWordLogin" name="passWord" />
+              <br />
+              <input type="submit" id="login" value="Logga in" />
+            </form>
+          </section>
+          <div id="errMessageLog"></div>
+        </div>
+      </div>
+      <div id="errMessageFail"></div>
+    </main>
+    <footer>
+      <div>
+        <p>&copy;Andreas Nygård, 2024</p>
+        <p>
+          <a href="mailto:anny2301@student.miun.se">anny2301@student.miun.se</a>
+        </p>
+      </div>
+      <div>
+        <li><a href="./login.html">Administration</a></li>
+      </div>
+    </footer>
+  </body>
+</html>
