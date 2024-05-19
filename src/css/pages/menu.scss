@@ -1,6 +1,8 @@
 section {
   margin-bottom: 40px;
   color: rgb(0, 0, 44);
+  display: flex;
+  flex-direction: column;
 }
 
 section h2 {
@@ -17,28 +19,35 @@ section h2 {
   margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .menu-item h3 {
   margin: 0;
   font-size: 1.5em;
+  flex: 2;
 }
 
 .menu-item p {
   margin: 0;
   font-style: italic;
+  flex: 1;
 }
 
 .menu-item .price {
   font-size: 1.2em;
   font-weight: bold;
+  flex: 1;
+  text-align: right;
 }
 
 @media all and (max-width: 700px) {
   .menu-item h3 {
     font-size: 1rem;
   }
-  .price {
+
+  .menu-item .price {
     font-size: 0.7rem;
   }
   section h2 {

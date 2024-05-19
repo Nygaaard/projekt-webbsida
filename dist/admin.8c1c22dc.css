@@ -51,16 +51,28 @@ input[type="text"], input[type="password"], input[type="email"] {
 input[type="submit"] {
   color: #fff;
   cursor: pointer;
-  background-color: #4caf50;
+  background-color: #3d3af1;
   border: none;
   border-radius: 4px;
-  width: 100%;
+  width: 60%;
   margin: 8px 0;
   padding: 14px 20px;
 }
 
 input[type="submit"]:hover {
   background-color: #45a049;
+}
+
+.register-small {
+  width: 35%;
+  height: auto;
+}
+
+.login-form {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 header {
@@ -100,8 +112,12 @@ footer {
   text-decoration: none;
 }
 
-.admin-link li, a {
+.admin-link-container ul {
   list-style: none;
+}
+
+.admin-link-container ul li a {
+  color: #00f;
 }
 
 h1 {
@@ -117,7 +133,9 @@ h1 {
 
 section {
   color: #00002c;
+  flex-direction: column;
   margin-bottom: 40px;
+  display: flex;
 }
 
 section h2 {
@@ -131,22 +149,27 @@ section h2 {
   border-bottom: 1px solid #ccc;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   margin-bottom: 15px;
-  padding-bottom: 10px;
+  padding: 0 1rem;
   display: flex;
 }
 
 .menu-item h3 {
+  flex: 2;
   margin: 0;
   font-size: 1.5em;
 }
 
 .menu-item p {
+  flex: 1;
   margin: 0;
   font-style: italic;
 }
 
 .menu-item .price {
+  text-align: right;
+  flex: 1;
   font-size: 1.2em;
   font-weight: bold;
 }
@@ -156,7 +179,7 @@ section h2 {
     font-size: 1rem;
   }
 
-  .price {
+  .menu-item .price {
     font-size: .7rem;
   }
 

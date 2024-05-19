@@ -586,17 +586,26 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"1SICI":[function(require,module,exports) {
 var _loginAdmin = require("./loginAdmin");
 var _displayMenu = require("./displayMenu");
+var _registerAdmin = require("./registerAdmin");
+var _updateMenu = require("./updateMenu");
 document.addEventListener("DOMContentLoaded", ()=>{
     const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
     const userNameLoginEl = document.getElementById("userNameLogin");
     const passwordLoginEl = document.getElementById("passWordLogin");
     const errorMessageEl = document.getElementById("errMessageLog");
-    //Display menu if on menu page
+    const firstnameEl = document.getElementById("firstname");
+    const lastnameEl = document.getElementById("lastname");
+    const emailEl = document.getElementById("email");
+    const usernameRegisterEl = document.getElementById("username");
+    const passwordRegisterEl = document.getElementById("password");
+    console.log(window.location.pathname.includes("admin"));
+    // Display menu if on menu page
     if (window.location.pathname.includes("menu")) {
         (0, _displayMenu.displayCourses)();
         (0, _displayMenu.displayDrinks)();
     }
-    //If on login page
+    // If on login page
     if (window.location.pathname.includes("login")) loginForm.addEventListener("submit", async (event)=>{
         event.preventDefault();
         const username = userNameLoginEl.value;
@@ -609,9 +618,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
             console.error("Error during login:", error);
         }
     });
+    // If on admin page
+    if (window.location.pathname.includes("admin")) {
+        console.log("hej");
+        console.log("Admin page detected");
+        (0, _updateMenu.displayCoursesAdmin)();
+        registerForm.addEventListener("submit", async (event)=>{
+            event.preventDefault();
+            const firstname = firstnameEl.value;
+            const lastname = lastnameEl.value;
+            const email = emailEl.value;
+            const username = usernameRegisterEl.value;
+            const password = passwordRegisterEl.value;
+            try {
+                await (0, _registerAdmin.registerAdmin)(firstname, lastname, email, username, password);
+                alert("Ny anv\xe4ndare registrerad!");
+            } catch (error) {
+                console.error("Error registering user", error);
+            }
+        });
+    }
 });
 
-},{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG"}],"8Ahzo":[function(require,module,exports) {
+},{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG","./registerAdmin":"7KAcC","./updateMenu":"e1R4P"}],"8Ahzo":[function(require,module,exports) {
 //Login admin
 //Variables
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -798,6 +827,159 @@ async function getDrinks() {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["j2YDk","1SICI"], "1SICI", "parcelRequiredfb8")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7KAcC":[function(require,module,exports) {
+//Register new admin
+//Variables
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "registerAdmin", ()=>registerAdmin);
+const errMessageRegEl = document.getElementById("errMessageReg");
+async function registerAdmin(firstname, lastname, email, username, password) {
+    try {
+        //Validation
+        //If any input field is empty
+        if (!firstname || !lastname || !email || !username || !password) errMessageRegEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i.";
+        // Invalid email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            errMessageRegEl.textContent = "Ogiltig email-adress.";
+            return;
+        }
+        //Invalid username
+        if (username.length < 5) errMessageRegEl.textContent = "Anv\xe4ndarnamn m\xe5ste vara minst 5 tecken l\xe5ngt.";
+        //Invalid password
+        if (password.length < 8) errMessageRegEl.textContent = "L\xf6senordet m\xe5ste vara minst 8 tecken l\xe5ngt.";
+        const url = "http://localhost:3000/api/register";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                firstname,
+                lastname,
+                email,
+                username,
+                password
+            })
+        });
+        //If register succeeds
+        if (!response.ok) errMessageRegEl.textContent = "Kunde inte registrera ny anv\xe4ndare.";
+        //Return result
+        const data = await response.json();
+        alert("Du \xe4r nu registrerad!");
+        let firstnameEl = document.getElementById("firstname");
+        let lastnameEl = document.getElementById("lastname");
+        let emailEl = document.getElementById("email");
+        let usernameEl = document.getElementById("username");
+        let passwordEl = document.getElementById("password");
+        firstnameEl.value = "";
+        lastnameEl.value = "";
+        emailEl.value = "";
+        usernameEl = "";
+        passwordEl.value = "";
+        return data;
+    } catch (error) {
+        console.log("Error register new user:");
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e1R4P":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+// Display courses
+parcelHelpers.export(exports, "displayCoursesAdmin", ()=>displayCoursesAdmin) //Display drinks
+ // export async function displayAdmin() {
+ //   const drinks = await getDrinks();
+ //   const drinkSectionEl = document.getElementById("drinkSection");
+ //   // Create and append drink header
+ //   const drinkHeader = document.createElement("h2");
+ //   drinkHeader.textContent = "Dryck";
+ //   drinkSectionEl.appendChild(drinkHeader);
+ //   // Display drinks
+ //   drinks.menu.forEach((drink) => {
+ //     // Create drink elements
+ //     const drinkDiv = document.createElement("div");
+ //     drinkDiv.classList.add("menu-item");
+ //     const drinkName = document.createElement("h3");
+ //     drinkName.textContent = drink.drinkname;
+ //     const description = document.createElement("p");
+ //     description.textContent = drink.description;
+ //     const price = document.createElement("span");
+ //     price.classList.add("price");
+ //     price.textContent = drink.price + " kr";
+ //     // Append elements to drink div
+ //     drinkDiv.appendChild(drinkName);
+ //     drinkDiv.appendChild(description);
+ //     drinkDiv.appendChild(price);
+ //     // Append drink div to drink section
+ //     drinkSectionEl.appendChild(drinkDiv);
+ //   });
+ // }
+;
+var _getData = require("./getData");
+async function displayCoursesAdmin() {
+    const courses = await (0, _getData.getCourses)();
+    const updateFormEl = document.getElementById("update-form");
+    // Create and append course header
+    const courseHeader = document.createElement("h2");
+    courseHeader.textContent = "R\xe4tter";
+    updateFormEl.appendChild(courseHeader);
+//   // Display courses
+//   courses.menu.forEach((course, index) => {
+//     // Generate unique IDs for each input
+//     const coursenameId = `coursename-${index}`;
+//     const descriptionId = `description-${index}`;
+//     const priceId = `price-${index}`;
+//     // Coursename
+//     const coursenameLabel = document.createElement("label");
+//     coursenameLabel.setAttribute("for", coursenameId);
+//     coursenameLabel.textContent = `Maträtt: ${course.coursename}`;
+//     const coursenameInput = document.createElement("input");
+//     coursenameInput.setAttribute("type", "text");
+//     coursenameInput.setAttribute("id", coursenameId);
+//     coursenameInput.setAttribute("name", "coursenameAdmin");
+//     coursenameInput.value = course.coursename;
+//     // Description
+//     const descriptionLabel = document.createElement("label");
+//     descriptionLabel.setAttribute("for", descriptionId);
+//     descriptionLabel.textContent = `Beskrivning: ${course.description}`;
+//     const descriptionInput = document.createElement("input");
+//     descriptionInput.setAttribute("type", "text");
+//     descriptionInput.setAttribute("id", descriptionId);
+//     descriptionInput.setAttribute("name", "descriptionAdmin");
+//     descriptionInput.value = course.description;
+//     // Price
+//     const priceLabel = document.createElement("label");
+//     priceLabel.setAttribute("for", priceId);
+//     priceLabel.textContent = `Pris: ${course.price} kr`;
+//     const priceInput = document.createElement("input");
+//     priceInput.setAttribute("type", "text");
+//     priceInput.setAttribute("id", priceId);
+//     priceInput.setAttribute("name", "priceAdmin");
+//     priceInput.value = course.price;
+//     // Submit
+//     const updateCourseSubmitEl = document.createElement("input");
+//     updateCourseSubmitEl.setAttribute("type", "submit");
+//     updateCourseSubmitEl.value = "Uppdatera";
+//     // Append elements to update form
+//     updateFormEl.appendChild(coursenameLabel);
+//     updateFormEl.appendChild(document.createElement("br"));
+//     updateFormEl.appendChild(coursenameInput);
+//     updateFormEl.appendChild(document.createElement("br"));
+//     updateFormEl.appendChild(descriptionLabel);
+//     updateFormEl.appendChild(document.createElement("br"));
+//     updateFormEl.appendChild(descriptionInput);
+//     updateFormEl.appendChild(document.createElement("br"));
+//     updateFormEl.appendChild(priceLabel);
+//     updateFormEl.appendChild(document.createElement("br"));
+//     updateFormEl.appendChild(priceInput);
+//     updateFormEl.appendChild(document.createElement("br"));
+//     updateFormEl.appendChild(updateCourseSubmitEl);
+//     updateFormEl.appendChild(document.createElement("br"));
+//   });
+}
+
+},{"./getData":"7kMqK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["j2YDk","1SICI"], "1SICI", "parcelRequiredfb8")
 
 //# sourceMappingURL=index.18dbc454.js.map

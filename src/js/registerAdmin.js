@@ -36,7 +36,6 @@ export async function registerAdmin(
         "Lösenordet måste vara minst 8 tecken långt.";
     }
 
-    // Kommentar
     const url = "http://localhost:3000/api/register";
     const response = await fetch(url, {
       method: "POST",

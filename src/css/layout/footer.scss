@@ -7,8 +7,10 @@ footer {
 .admin-link {
   text-decoration: none;
 }
-.admin-link li,
-a {
+
+.admin-link-container ul {
   list-style: none;
-  list-style: none;
+  li a {
+    color: blue;
+  }
 }

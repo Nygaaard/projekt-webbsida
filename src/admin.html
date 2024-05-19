@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
     <link rel="stylesheet" href="css/main.scss" />
+    <script src="js/main.js" type="module"></script>
     <script src="js/admin.js" defer></script>
   </head>
   <body>
@@ -23,11 +24,15 @@
       <div>
         <p>Här kan du som admin registrera ett nytt konto samt uppdatera den befintliga menyn.</p>
       </div>
+      <section class="update-menu">
+        <h2>Uppdatera menyn</h2>
+          <form method="post" class="update-form" id="update-form"></form>
+      </section>
       <div class="form-wrapper">
         <div class="form-container">
-          <section class="register-section">
-            <h2 class="form-header">Registrera dig</h2>
-            <form method="post" class="register-form">
+          <section class="register-section register-small">
+            <h3 class="form-header">Registrera nytt konto</h3>
+            <form method="post" class="register-form" id="register-form">
               <label for="firstname">Förnamn:</label>
               <br />
               <input type="text" id="firstname" name="firstname" />
@@ -38,7 +43,7 @@
               <br />
               <label for="email">Email:</label>
               <br />
-              <input type="email" id="email" name="username" />
+              <input type="email" id="email" name="email" />
               <br />
               <label for="username">Användarnamn:</label>
               <br />
@@ -48,7 +53,7 @@
               <br />
               <input type="password" id="password" name="password" />
               <br />
-              <input type="submit" id="register" value="Registrera" />
+              <input type="submit" id="register" value="Registrera" class="button"/>
             </form>
           </section>
       </div class="form-wrapper">
