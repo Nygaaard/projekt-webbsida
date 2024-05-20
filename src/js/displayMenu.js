@@ -9,7 +9,7 @@ export async function displayCourses() {
 
   // Create and append course header
   const courseHeader = document.createElement("h2");
-  courseHeader.textContent = "Rätter";
+  courseHeader.textContent = "Matmeny";
   courseSectionEl.appendChild(courseHeader);
 
   // Display courses

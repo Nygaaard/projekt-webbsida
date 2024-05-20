@@ -806,7 +806,7 @@ async function displayCourses() {
     const courseSectionEl = document.getElementById("courseSection");
     // Create and append course header
     const courseHeader = document.createElement("h2");
-    courseHeader.textContent = "R\xe4tter";
+    courseHeader.textContent = "Matmeny";
     courseSectionEl.appendChild(courseHeader);
     // Display courses
     courses.menu.forEach((course)=>{
