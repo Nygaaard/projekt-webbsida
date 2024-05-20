@@ -663,7 +663,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
             const password = passwordRegisterEl.value;
             try {
                 await (0, _registerAdmin.registerAdmin)(firstname, lastname, email, username, password);
-                alert("Ny anv\xe4ndare registrerad!");
             } catch (error) {
                 console.error("Error registering user", error);
             }
@@ -896,7 +895,10 @@ async function registerAdmin(firstname, lastname, email, username, password) {
     try {
         //Validation
         //If any input field is empty
-        if (!firstname || !lastname || !email || !username || !password) errMessageRegEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i.";
+        if (!firstname || !lastname || !email || !username || !password) {
+            errMessageRegEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i.";
+            return;
+        }
         // Invalid email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -904,9 +906,15 @@ async function registerAdmin(firstname, lastname, email, username, password) {
             return;
         }
         //Invalid username
-        if (username.length < 5) errMessageRegEl.textContent = "Anv\xe4ndarnamn m\xe5ste vara minst 5 tecken l\xe5ngt.";
+        if (username.length < 5) {
+            errMessageRegEl.textContent = "Anv\xe4ndarnamn m\xe5ste vara minst 5 tecken l\xe5ngt.";
+            return;
+        }
         //Invalid password
-        if (password.length < 8) errMessageRegEl.textContent = "L\xf6senordet m\xe5ste vara minst 8 tecken l\xe5ngt.";
+        if (password.length < 8) {
+            errMessageRegEl.textContent = "L\xf6senordet m\xe5ste vara minst 8 tecken l\xe5ngt.";
+            return;
+        }
         const url = "http://localhost:3000/api/register";
         const response = await fetch(url, {
             method: "POST",
@@ -922,7 +930,10 @@ async function registerAdmin(firstname, lastname, email, username, password) {
             })
         });
         //If register succeeds
-        if (!response.ok) errMessageRegEl.textContent = "Kunde inte registrera ny anv\xe4ndare.";
+        if (!response.ok) {
+            errMessageRegEl.textContent = "Kunde inte registrera ny anv\xe4ndare.";
+            return;
+        }
         //Return result
         const data = await response.json();
         alert("Du \xe4r nu registrerad!");
@@ -1265,12 +1276,15 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "registerSubscriber", ()=>registerSubscriber);
 const errMessageSubscriberEl = document.getElementById("errMessageSubscribe");
-errMessageSubscriberEl.setAttribute("id", "errMessageFail");
+if (window.location.pathname.includes("index")) errMessageSubscriberEl.classList.add("errMessageSub");
 async function registerSubscriber(firstname, lastname, email, address) {
     try {
         //Validation
         //If any input field is empty
-        if (!firstname || !lastname || !email || !address) errMessageSubscriberEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i.";
+        if (!firstname || !lastname || !email || !address) {
+            errMessageSubscriberEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i.";
+            return;
+        }
         //Invalid email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -1291,7 +1305,10 @@ async function registerSubscriber(firstname, lastname, email, address) {
             })
         });
         //If register succeeds
-        if (!response.ok) errMessageSubscriberEl.textContent = "Kunde inte registrera prenumeration.";
+        if (!response.ok) {
+            errMessageSubscriberEl.textContent = "Kunde inte registrera prenumeration.";
+            return;
+        }
         //Return result
         const data = await response.json();
         alert("Du prenumererar nu p\xe5 nyhetsbrevet!");
@@ -1305,6 +1322,7 @@ async function registerSubscriber(firstname, lastname, email, address) {
         addressEl.value = "";
         return data;
     } catch (error) {
+        console.log(error);
         errMessageSubscriberEl.textContent = "N\xe5got gick fel...";
     }
 }

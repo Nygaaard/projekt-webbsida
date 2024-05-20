@@ -15,6 +15,7 @@ export async function registerAdmin(
     //If any input field is empty
     if (!firstname || !lastname || !email || !username || !password) {
       errMessageRegEl.textContent = "Alla fält måste fyllas i.";
+      return;
     }
 
     // Invalid email
@@ -28,12 +29,14 @@ export async function registerAdmin(
     if (username.length < 5) {
       errMessageRegEl.textContent =
         "Användarnamn måste vara minst 5 tecken långt.";
+      return;
     }
 
     //Invalid password
     if (password.length < 8) {
       errMessageRegEl.textContent =
         "Lösenordet måste vara minst 8 tecken långt.";
+      return;
     }
 
     const url = "http://localhost:3000/api/register";
@@ -54,6 +57,7 @@ export async function registerAdmin(
     //If register succeeds
     if (!response.ok) {
       errMessageRegEl.textContent = "Kunde inte registrera ny användare.";
+      return;
     }
 
     //Return result

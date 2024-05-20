@@ -1,4 +1,11 @@
 .icon {
-  width: 50px;
-  height: 70px;
+  width: 100px;
+  height: 140px;
+}
+
+@media all and (max-width: 700px) {
+  .icon {
+    width: 60px;
+    height: 80px;
+  }
 }

@@ -2,9 +2,18 @@ h1 {
   text-align: center;
   margin-bottom: 2.5rem;
   margin-top: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Helvetica Neue", sans-serif;
+  color: #2c3e50;
 }
 .info-div {
-  width: 70%;
+  background-color: #fff; /* Vit bakgrundsfärg för tydlighet */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 50%;
   margin: 0 auto;
 }
 .subscribe-section {
@@ -12,4 +21,126 @@ h1 {
 }
 .mid {
   text-align: center;
+}
+.order-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.order-section h2 {
+  color: #2c3e50;
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.order-section p {
+  color: #555;
+  font-size: 16px;
+}
+.location-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.location-section h2 {
+  color: #2c3e50;
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.location-section p {
+  color: #555;
+  font-size: 16px;
+  padding: 0.5rem;
+}
+
+.location-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.location-section ul li {
+  margin-bottom: 10px;
+}
+
+.location-section ul li strong {
+  font-weight: bold;
+}
+
+.opening-hours-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.opening-hours-section h2 {
+  color: #2c3e50;
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.opening-hours-section p {
+  color: #555;
+  font-size: 16px;
+  padding: 1rem;
+}
+
+.opening-hours-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.opening-hours-section ul li {
+  margin-bottom: 10px;
+}
+
+.opening-hours-section ul li strong {
+  font-weight: bold;
+}
+
+@media all and (max-width: 1000px) {
+  .info-div {
+    width: 80%;
+  }
+  .subscribe-section {
+    width: 80%;
+  }
+  .subscribe-form {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .info-div {
+    width: 95%;
+  }
+  .subscribe-section {
+    width: 95%;
+  }
+  .subscribe-form {
+    width: 100%;
+  }
 }

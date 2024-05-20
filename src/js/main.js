@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         await registerAdmin(firstname, lastname, email, username, password);
-        alert("Ny användare registrerad!");
       } catch (error) {
         console.error("Error registering user", error);
       }

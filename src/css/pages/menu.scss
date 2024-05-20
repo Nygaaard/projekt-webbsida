@@ -10,6 +10,8 @@ section h2 {
   padding-bottom: 5px;
   margin-bottom: 20px;
   font-size: 1.8em;
+  text-align: center;
+  margin-top: 80px;
 }
 
 .menu-item {
@@ -19,8 +21,9 @@ section h2 {
   margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
-  width: 100%;
+  width: 50%;
   padding: 0 1rem;
+  margin: 0 auto;
 }
 
 .menu-item h3 {
@@ -30,7 +33,7 @@ section h2 {
 }
 
 .menu-item p {
-  margin: 0;
+  margin-bottom: 20px;
   font-style: italic;
   flex: 1;
 }
@@ -40,6 +43,26 @@ section h2 {
   font-weight: bold;
   flex: 1;
   text-align: right;
+}
+
+.menu-info {
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  line-height: 1.5rem;
+  margin-top: 40px;
+}
+.menu-info h2 {
+  margin-bottom: 20px;
+}
+
+@media all and (max-width: 900px) {
+  .menu-item {
+    width: 80%;
+  }
+  .menu-info {
+    width: 80%;
+  }
 }
 
 @media all and (max-width: 700px) {
@@ -52,5 +75,17 @@ section h2 {
   }
   section h2 {
     font-size: 1.2rem;
+  }
+  .menu-item {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .menu-item {
+    width: 95%;
+  }
+  .menu-info {
+    width: 95%;
   }
 }

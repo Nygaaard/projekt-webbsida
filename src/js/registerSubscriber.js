@@ -2,7 +2,9 @@
 
 //Variables
 const errMessageSubscriberEl = document.getElementById("errMessageSubscribe");
-errMessageSubscriberEl.setAttribute("id", "errMessageFail");
+if (window.location.pathname.includes("index")) {
+  errMessageSubscriberEl.classList.add("errMessageSub");
+}
 
 export async function registerSubscriber(firstname, lastname, email, address) {
   try {
@@ -10,6 +12,7 @@ export async function registerSubscriber(firstname, lastname, email, address) {
     //If any input field is empty
     if (!firstname || !lastname || !email || !address) {
       errMessageSubscriberEl.textContent = "Alla fält måste fyllas i.";
+      return;
     }
 
     //Invalid email
@@ -37,6 +40,7 @@ export async function registerSubscriber(firstname, lastname, email, address) {
     if (!response.ok) {
       errMessageSubscriberEl.textContent =
         "Kunde inte registrera prenumeration.";
+      return;
     }
 
     //Return result
@@ -55,6 +59,7 @@ export async function registerSubscriber(firstname, lastname, email, address) {
 
     return data;
   } catch (error) {
+    console.log(error);
     errMessageSubscriberEl.textContent = "Något gick fel...";
   }
 }

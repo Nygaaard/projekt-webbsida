@@ -1,3 +1,37 @@
 .dryck-header {
   margin-top: 100px;
 }
+.add-course,
+.add-drink,
+.update-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.admin-info {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 30px;
+}
+
+@media all and (max-width: 1110px) {
+  .add-course,
+  .add-drink,
+  .update-form {
+    width: 80%;
+  }
+  .register-section {
+    width: 100%;
+  }
+  .register-form {
+    width: 100%;
+  }
+}
+@media all and (max-width: 700px) {
+  .add-course,
+  .add-drink,
+  .update-form {
+    width: 95%;
+  }
+}
