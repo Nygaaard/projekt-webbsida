@@ -588,7 +588,9 @@ var _loginAdmin = require("./loginAdmin");
 var _displayMenu = require("./displayMenu");
 var _registerAdmin = require("./registerAdmin");
 var _updateMenu = require("./updateMenu");
+var _addMenu = require("./addMenu");
 document.addEventListener("DOMContentLoaded", ()=>{
+    //Variables
     const loginForm = document.getElementById("login-form");
     const registerForm = document.getElementById("register-form");
     const userNameLoginEl = document.getElementById("userNameLogin");
@@ -599,14 +601,23 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const emailEl = document.getElementById("email");
     const usernameRegisterEl = document.getElementById("username");
     const passwordRegisterEl = document.getElementById("password");
+    const addCourseEl = document.getElementById("addCourse");
+    const addCoursenameEl = document.getElementById("addCoursename");
+    const addCourseDescriptionEl = document.getElementById("addCourseDescription");
+    const addCoursePriceEl = document.getElementById("addCoursePrice");
+    const addCourseCategoryEl = document.getElementById("addCourseCategory");
+    const addDrinknameEl = document.getElementById("addDrinkname");
+    const addDrinkDescriptionEl = document.getElementById("addDrinkDescription");
+    const addDrinkPriceEl = document.getElementById("addDrinkPrice");
+    const addDrinkEl = document.getElementById("addDrink");
     // Display menu if on menu page
     if (window.location.pathname.includes("menu")) {
         (0, _displayMenu.displayCourses)();
         (0, _displayMenu.displayDrinks)();
     }
     // If on login page
-    if (window.location.pathname.includes("login")) loginForm.addEventListener("submit", async (event)=>{
-        event.preventDefault();
+    if (window.location.pathname.includes("login")) loginForm.addEventListener("submit", async (event1)=>{
+        event1.preventDefault();
         const username = userNameLoginEl.value;
         const password = passwordLoginEl.value;
         // Clear previous error messages
@@ -620,8 +631,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // If on admin page
     if (window.location.pathname.includes("admin")) {
         (0, _updateMenu.displayCoursesAdmin)();
-        registerForm.addEventListener("submit", async (event)=>{
-            event.preventDefault();
+        (0, _updateMenu.displayDrinksAdmin)();
+        //Register new user on admin page
+        registerForm.addEventListener("submit", async (event1)=>{
+            event1.preventDefault();
             const firstname = firstnameEl.value;
             const lastname = lastnameEl.value;
             const email = emailEl.value;
@@ -634,10 +647,37 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 console.error("Error registering user", error);
             }
         });
+        //Add new course on admin page
+        addCourseEl.addEventListener("click", async function() {
+            event.preventDefault();
+            const coursename = addCoursenameEl.value;
+            const description = addCourseDescriptionEl.value;
+            const price = addCoursePriceEl.value;
+            const category = addCourseCategoryEl.value;
+            try {
+                await (0, _addMenu.addCourse)(coursename, description, price, category);
+                alert("Ny r\xe4tt tillagd!");
+            } catch (error) {
+                console.error("Error add new course");
+            }
+        });
+        //Add new drink on admin page
+        addDrinkEl.addEventListener("click", async function() {
+            event.preventDefault();
+            const drinkname = addDrinknameEl.value;
+            const description = addDrinkDescriptionEl.value;
+            const price = addDrinkPriceEl.value;
+            try {
+                await (0, _addMenu.addDrink)(drinkname, description, price);
+                alert("Ny dryck tillagd!");
+            } catch (error) {
+                console.log("Error adding new drink");
+            }
+        });
     }
 });
 
-},{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG","./registerAdmin":"7KAcC","./updateMenu":"e1R4P"}],"8Ahzo":[function(require,module,exports) {
+},{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG","./registerAdmin":"7KAcC","./updateMenu":"e1R4P","./addMenu":"iXZ8Y"}],"8Ahzo":[function(require,module,exports) {
 //Login admin
 //Variables
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -886,6 +926,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // Display courses
 parcelHelpers.export(exports, "displayCoursesAdmin", ()=>displayCoursesAdmin);
+//Display drinks
+parcelHelpers.export(exports, "displayDrinksAdmin", ()=>displayDrinksAdmin);
 var _getData = require("./getData");
 async function displayCoursesAdmin() {
     const courses = await (0, _getData.getCourses)();
@@ -942,9 +984,26 @@ async function displayCoursesAdmin() {
         updateCourseSubmitEl.setAttribute("type", "submit");
         updateCourseSubmitEl.setAttribute("id", `update-course-${index}`);
         updateCourseSubmitEl.value = "Uppdatera";
+        //Onclick for update button
         updateCourseSubmitEl.onclick = function() {
             event.preventDefault();
             updateCourse(index, course.id);
+            alert("R\xe4tt uppdaterad!");
+        };
+        //Delete
+        const deleteCourseSubmitEl = document.createElement("input");
+        deleteCourseSubmitEl.setAttribute("type", "submit");
+        deleteCourseSubmitEl.setAttribute("id", `delete-course-${index}`);
+        deleteCourseSubmitEl.value = "Radera";
+        //Onclick for delete button
+        deleteCourseSubmitEl.onclick = function() {
+            event.preventDefault();
+            deleteCourse(index, course.id);
+            alert("R\xe4tt raderad!");
+            coursenameInput.value = "";
+            descriptionInput.value = "";
+            priceInput.value = "";
+            categoryInput.value = "";
         };
         // Append elements to update form
         updateFormEl.appendChild(coursenameLabel);
@@ -965,36 +1024,97 @@ async function displayCoursesAdmin() {
         updateFormEl.appendChild(document.createElement("br"));
         updateFormEl.appendChild(updateCourseSubmitEl);
         updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(deleteCourseSubmitEl);
+        updateFormEl.appendChild(document.createElement("br"));
     });
 }
-//Display drinks
-// export async function displayAdmin() {
-//   const drinks = await getDrinks();
-//   const drinkSectionEl = document.getElementById("drinkSection");
-//   // Create and append drink header
-//   const drinkHeader = document.createElement("h2");
-//   drinkHeader.textContent = "Dryck";
-//   drinkSectionEl.appendChild(drinkHeader);
-//   // Display drinks
-//   drinks.menu.forEach((drink) => {
-//     // Create drink elements
-//     const drinkDiv = document.createElement("div");
-//     drinkDiv.classList.add("menu-item");
-//     const drinkName = document.createElement("h3");
-//     drinkName.textContent = drink.drinkname;
-//     const description = document.createElement("p");
-//     description.textContent = drink.description;
-//     const price = document.createElement("span");
-//     price.classList.add("price");
-//     price.textContent = drink.price + " kr";
-//     // Append elements to drink div
-//     drinkDiv.appendChild(drinkName);
-//     drinkDiv.appendChild(description);
-//     drinkDiv.appendChild(price);
-//     // Append drink div to drink section
-//     drinkSectionEl.appendChild(drinkDiv);
-//   });
-// }
+async function displayDrinksAdmin() {
+    const drinks = await (0, _getData.getDrinks)();
+    const updateFormEl = document.getElementById("update-form");
+    // Create and append drink header
+    const drinkHeader = document.createElement("h2");
+    drinkHeader.classList.add("dryck-header");
+    drinkHeader.textContent = "Dryck";
+    updateFormEl.appendChild(drinkHeader);
+    // Display drinks
+    drinks.menu.forEach((drink, index)=>{
+        // Generate unique IDs for each input
+        const drinknameId = `drinkname-${index}`;
+        const descriptionId = `description-${index}`;
+        const priceId = `price-${index}`;
+        const categoryId = `category-${index}`;
+        // Drinkname
+        const drinknameLabel = document.createElement("label");
+        drinknameLabel.setAttribute("for", drinknameId);
+        drinknameLabel.textContent = `Matr\xe4tt: ${drink.drinkname}`;
+        const drinknameInput = document.createElement("input");
+        drinknameInput.setAttribute("type", "text");
+        drinknameInput.setAttribute("id", drinknameId);
+        drinknameInput.setAttribute("name", "drinknameAdmin");
+        drinknameInput.value = drink.drinkname;
+        // Description
+        const descriptionLabel = document.createElement("label");
+        descriptionLabel.setAttribute("for", descriptionId);
+        descriptionLabel.textContent = `Beskrivning: ${drink.description}`;
+        const descriptionInput = document.createElement("input");
+        descriptionInput.setAttribute("type", "text");
+        descriptionInput.setAttribute("id", descriptionId);
+        descriptionInput.setAttribute("name", "descriptionAdmin");
+        descriptionInput.value = drink.description;
+        // Price
+        const priceLabel = document.createElement("label");
+        priceLabel.setAttribute("for", priceId);
+        priceLabel.textContent = `Pris: ${drink.price} kr`;
+        const priceInput = document.createElement("input");
+        priceInput.setAttribute("type", "text");
+        priceInput.setAttribute("id", priceId);
+        priceInput.setAttribute("name", "priceAdmin");
+        priceInput.value = drink.price;
+        // Submit
+        const updateDrinkSubmitEl = document.createElement("input");
+        updateDrinkSubmitEl.setAttribute("type", "submit");
+        updateDrinkSubmitEl.setAttribute("id", `update-drink-${index}`);
+        updateDrinkSubmitEl.value = "Uppdatera";
+        //Onclick for update button
+        updateDrinkSubmitEl.onclick = function() {
+            event.preventDefault();
+            updateDrink(index, drink.id);
+            alert("Dryck uppdaterad!");
+        };
+        //Delete
+        const deleteDrinkSubmitEl = document.createElement("input");
+        deleteDrinkSubmitEl.setAttribute("type", "submit");
+        deleteDrinkSubmitEl.setAttribute("id", `delete-drink-${index}`);
+        deleteDrinkSubmitEl.value = "Radera";
+        //Onclick for delete button
+        deleteDrinkSubmitEl.onclick = function() {
+            event.preventDefault();
+            deleteDrink(index, drink.id);
+            alert("Dryck raderad!");
+            drinknameInput.value = "";
+            descriptionInput.value = "";
+            priceInput.value = "";
+        };
+        // Append elements to update form
+        updateFormEl.appendChild(drinknameLabel);
+        updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(drinknameInput);
+        updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(descriptionLabel);
+        updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(descriptionInput);
+        updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(priceLabel);
+        updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(priceInput);
+        updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(updateDrinkSubmitEl);
+        updateFormEl.appendChild(document.createElement("br"));
+        updateFormEl.appendChild(deleteDrinkSubmitEl);
+        updateFormEl.appendChild(document.createElement("br"));
+    });
+}
+//Update course
 async function updateCourse(index, id) {
     const url = `http://localhost:3000/api/courses/${id}`;
     const coursename = document.getElementById(`coursename-${index}`).value;
@@ -1002,7 +1122,7 @@ async function updateCourse(index, id) {
     const price = document.getElementById(`price-${index}`).value;
     const category = document.getElementById(`category-${index}`).value;
     const response = await fetch(url, {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
@@ -1013,9 +1133,111 @@ async function updateCourse(index, id) {
             category
         })
     });
-    console.log(response);
+}
+//Delete course
+async function deleteCourse(index, id) {
+    const url = `http://localhost:3000/api/courses/${id}`;
+    const coursename = document.getElementById(`coursename-${index}`).value;
+    const description = document.getElementById(`description-${index}`).value;
+    const price = document.getElementById(`price-${index}`).value;
+    const category = document.getElementById(`category-${index}`).value;
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            coursename,
+            description,
+            price,
+            category
+        })
+    });
+}
+//Update drinks
+async function updateDrink(index, id) {
+    const url = `http://localhost:3000/api/drinks/${id}`;
+    const drinkname = document.getElementById(`drinkname-${index}`).value;
+    const description = document.getElementById(`description-${index}`).value;
+    const price = document.getElementById(`price-${index}`).value;
+    const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            drinkname,
+            description,
+            price
+        })
+    });
+}
+//Delete drinks
+async function deleteDrink(index, id) {
+    const url = `http://localhost:3000/api/drinks/${id}`;
+    const drinkname = document.getElementById(`drinkname-${index}`).value;
+    const description = document.getElementById(`description-${index}`).value;
+    const price = document.getElementById(`price-${index}`).value;
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            drinkname,
+            description,
+            price
+        })
+    });
 }
 
-},{"./getData":"7kMqK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["j2YDk","1SICI"], "1SICI", "parcelRequiredfb8")
+},{"./getData":"7kMqK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iXZ8Y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addCourse", ()=>addCourse);
+parcelHelpers.export(exports, "addDrink", ()=>addDrink);
+const addCourseErrMsgEl = document.getElementById("addCourseErrMsg");
+const addDrinkErrMsgEl = document.getElementById("addDrinkErrMsg");
+async function addCourse(coursename, description, price, category) {
+    try {
+        if (!coursename || !description || !price || !category) addCourseErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
+        const url = "http://localhost:3000/api/courses";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                coursename,
+                description,
+                price,
+                category
+            })
+        });
+    } catch (error) {
+        console.log("Error adding new course");
+    }
+}
+async function addDrink(drinkname, description, price) {
+    try {
+        if (!drinkname || !description || !price) addDrinkErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
+        const url = "http://localhost:3000/api/drinks";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                drinkname,
+                description,
+                price
+            })
+        });
+    } catch (error) {
+        console.log("Error adding new drink");
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["j2YDk","1SICI"], "1SICI", "parcelRequiredfb8")
 
 //# sourceMappingURL=admin.18dbc454.js.map

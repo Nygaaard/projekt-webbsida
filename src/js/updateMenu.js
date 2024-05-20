@@ -69,9 +69,27 @@ export async function displayCoursesAdmin() {
     updateCourseSubmitEl.setAttribute("type", "submit");
     updateCourseSubmitEl.setAttribute("id", `update-course-${index}`);
     updateCourseSubmitEl.value = "Uppdatera";
+    //Onclick for update button
     updateCourseSubmitEl.onclick = function () {
       event.preventDefault();
       updateCourse(index, course.id);
+      alert("Rätt uppdaterad!");
+    };
+
+    //Delete
+    const deleteCourseSubmitEl = document.createElement("input");
+    deleteCourseSubmitEl.setAttribute("type", "submit");
+    deleteCourseSubmitEl.setAttribute("id", `delete-course-${index}`);
+    deleteCourseSubmitEl.value = "Radera";
+    //Onclick for delete button
+    deleteCourseSubmitEl.onclick = function () {
+      event.preventDefault();
+      deleteCourse(index, course.id);
+      alert("Rätt raderad!");
+      coursenameInput.value = "";
+      descriptionInput.value = "";
+      priceInput.value = "";
+      categoryInput.value = "";
     };
 
     // Append elements to update form
@@ -93,46 +111,112 @@ export async function displayCoursesAdmin() {
     updateFormEl.appendChild(document.createElement("br"));
     updateFormEl.appendChild(updateCourseSubmitEl);
     updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(deleteCourseSubmitEl);
+    updateFormEl.appendChild(document.createElement("br"));
   });
 }
 
 //Display drinks
-// export async function displayAdmin() {
-//   const drinks = await getDrinks();
+export async function displayDrinksAdmin() {
+  const drinks = await getDrinks();
 
-//   const drinkSectionEl = document.getElementById("drinkSection");
+  const updateFormEl = document.getElementById("update-form");
 
-//   // Create and append drink header
-//   const drinkHeader = document.createElement("h2");
-//   drinkHeader.textContent = "Dryck";
-//   drinkSectionEl.appendChild(drinkHeader);
+  // Create and append drink header
+  const drinkHeader = document.createElement("h2");
+  drinkHeader.classList.add("dryck-header");
+  drinkHeader.textContent = "Dryck";
+  updateFormEl.appendChild(drinkHeader);
 
-//   // Display drinks
-//   drinks.menu.forEach((drink) => {
-//     // Create drink elements
-//     const drinkDiv = document.createElement("div");
-//     drinkDiv.classList.add("menu-item");
+  // Display drinks
+  drinks.menu.forEach((drink, index) => {
+    // Generate unique IDs for each input
+    const drinknameId = `drinkname-${index}`;
+    const descriptionId = `description-${index}`;
+    const priceId = `price-${index}`;
+    const categoryId = `category-${index}`;
 
-//     const drinkName = document.createElement("h3");
-//     drinkName.textContent = drink.drinkname;
+    // Drinkname
+    const drinknameLabel = document.createElement("label");
+    drinknameLabel.setAttribute("for", drinknameId);
+    drinknameLabel.textContent = `Maträtt: ${drink.drinkname}`;
 
-//     const description = document.createElement("p");
-//     description.textContent = drink.description;
+    const drinknameInput = document.createElement("input");
+    drinknameInput.setAttribute("type", "text");
+    drinknameInput.setAttribute("id", drinknameId);
+    drinknameInput.setAttribute("name", "drinknameAdmin");
+    drinknameInput.value = drink.drinkname;
 
-//     const price = document.createElement("span");
-//     price.classList.add("price");
-//     price.textContent = drink.price + " kr";
+    // Description
+    const descriptionLabel = document.createElement("label");
+    descriptionLabel.setAttribute("for", descriptionId);
+    descriptionLabel.textContent = `Beskrivning: ${drink.description}`;
 
-//     // Append elements to drink div
-//     drinkDiv.appendChild(drinkName);
-//     drinkDiv.appendChild(description);
-//     drinkDiv.appendChild(price);
+    const descriptionInput = document.createElement("input");
+    descriptionInput.setAttribute("type", "text");
+    descriptionInput.setAttribute("id", descriptionId);
+    descriptionInput.setAttribute("name", "descriptionAdmin");
+    descriptionInput.value = drink.description;
 
-//     // Append drink div to drink section
-//     drinkSectionEl.appendChild(drinkDiv);
-//   });
-// }
+    // Price
+    const priceLabel = document.createElement("label");
+    priceLabel.setAttribute("for", priceId);
+    priceLabel.textContent = `Pris: ${drink.price} kr`;
 
+    const priceInput = document.createElement("input");
+    priceInput.setAttribute("type", "text");
+    priceInput.setAttribute("id", priceId);
+    priceInput.setAttribute("name", "priceAdmin");
+    priceInput.value = drink.price;
+
+    // Submit
+    const updateDrinkSubmitEl = document.createElement("input");
+    updateDrinkSubmitEl.setAttribute("type", "submit");
+    updateDrinkSubmitEl.setAttribute("id", `update-drink-${index}`);
+    updateDrinkSubmitEl.value = "Uppdatera";
+    //Onclick for update button
+    updateDrinkSubmitEl.onclick = function () {
+      event.preventDefault();
+      updateDrink(index, drink.id);
+      alert("Dryck uppdaterad!");
+    };
+
+    //Delete
+    const deleteDrinkSubmitEl = document.createElement("input");
+    deleteDrinkSubmitEl.setAttribute("type", "submit");
+    deleteDrinkSubmitEl.setAttribute("id", `delete-drink-${index}`);
+    deleteDrinkSubmitEl.value = "Radera";
+    //Onclick for delete button
+    deleteDrinkSubmitEl.onclick = function () {
+      event.preventDefault();
+      deleteDrink(index, drink.id);
+      alert("Dryck raderad!");
+      drinknameInput.value = "";
+      descriptionInput.value = "";
+      priceInput.value = "";
+    };
+
+    // Append elements to update form
+    updateFormEl.appendChild(drinknameLabel);
+    updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(drinknameInput);
+    updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(descriptionLabel);
+    updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(descriptionInput);
+    updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(priceLabel);
+    updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(priceInput);
+    updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(updateDrinkSubmitEl);
+    updateFormEl.appendChild(document.createElement("br"));
+    updateFormEl.appendChild(deleteDrinkSubmitEl);
+    updateFormEl.appendChild(document.createElement("br"));
+  });
+}
+
+//Update course
 async function updateCourse(index, id) {
   const url = `http://localhost:3000/api/courses/${id}`;
 
@@ -142,12 +226,62 @@ async function updateCourse(index, id) {
   const category = document.getElementById(`category-${index}`).value;
 
   const response = await fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ coursename, description, price, category }),
   });
+}
 
-  console.log(response);
+//Delete course
+async function deleteCourse(index, id) {
+  const url = `http://localhost:3000/api/courses/${id}`;
+
+  const coursename = document.getElementById(`coursename-${index}`).value;
+  const description = document.getElementById(`description-${index}`).value;
+  const price = document.getElementById(`price-${index}`).value;
+  const category = document.getElementById(`category-${index}`).value;
+
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ coursename, description, price, category }),
+  });
+}
+
+//Update drinks
+async function updateDrink(index, id) {
+  const url = `http://localhost:3000/api/drinks/${id}`;
+
+  const drinkname = document.getElementById(`drinkname-${index}`).value;
+  const description = document.getElementById(`description-${index}`).value;
+  const price = document.getElementById(`price-${index}`).value;
+
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ drinkname, description, price }),
+  });
+}
+
+//Delete drinks
+async function deleteDrink(index, id) {
+  const url = `http://localhost:3000/api/drinks/${id}`;
+
+  const drinkname = document.getElementById(`drinkname-${index}`).value;
+  const description = document.getElementById(`description-${index}`).value;
+  const price = document.getElementById(`price-${index}`).value;
+
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ drinkname, description, price }),
+  });
 }

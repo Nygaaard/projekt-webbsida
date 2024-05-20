@@ -1,9 +1,11 @@
 import { loginAdmin } from "./loginAdmin";
 import { displayCourses, displayDrinks } from "./displayMenu";
 import { registerAdmin } from "./registerAdmin";
-import { displayCoursesAdmin } from "./updateMenu";
+import { displayCoursesAdmin, displayDrinksAdmin } from "./updateMenu";
+import { addCourse, addDrink } from "./addMenu";
 
 document.addEventListener("DOMContentLoaded", () => {
+  //Variables
   const loginForm = document.getElementById("login-form");
   const registerForm = document.getElementById("register-form");
   const userNameLoginEl = document.getElementById("userNameLogin");
@@ -15,6 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailEl = document.getElementById("email");
   const usernameRegisterEl = document.getElementById("username");
   const passwordRegisterEl = document.getElementById("password");
+
+  const addCourseEl = document.getElementById("addCourse");
+  const addCoursenameEl = document.getElementById("addCoursename");
+  const addCourseDescriptionEl = document.getElementById(
+    "addCourseDescription"
+  );
+  const addCoursePriceEl = document.getElementById("addCoursePrice");
+  const addCourseCategoryEl = document.getElementById("addCourseCategory");
+
+  const addDrinknameEl = document.getElementById("addDrinkname");
+  const addDrinkDescriptionEl = document.getElementById("addDrinkDescription");
+  const addDrinkPriceEl = document.getElementById("addDrinkPrice");
+  const addDrinkEl = document.getElementById("addDrink");
 
   // Display menu if on menu page
   if (window.location.pathname.includes("menu")) {
@@ -44,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // If on admin page
   if (window.location.pathname.includes("admin")) {
     displayCoursesAdmin();
+    displayDrinksAdmin();
+    //Register new user on admin page
     registerForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
@@ -58,6 +75,39 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Ny användare registrerad!");
       } catch (error) {
         console.error("Error registering user", error);
+      }
+    });
+
+    //Add new course on admin page
+    addCourseEl.addEventListener("click", async function () {
+      event.preventDefault();
+
+      const coursename = addCoursenameEl.value;
+      const description = addCourseDescriptionEl.value;
+      const price = addCoursePriceEl.value;
+      const category = addCourseCategoryEl.value;
+
+      try {
+        await addCourse(coursename, description, price, category);
+        alert("Ny rätt tillagd!");
+      } catch (error) {
+        console.error("Error add new course");
+      }
+    });
+
+    //Add new drink on admin page
+    addDrinkEl.addEventListener("click", async function () {
+      event.preventDefault();
+
+      const drinkname = addDrinknameEl.value;
+      const description = addDrinkDescriptionEl.value;
+      const price = addDrinkPriceEl.value;
+
+      try {
+        await addDrink(drinkname, description, price);
+        alert("Ny dryck tillagd!");
+      } catch (error) {
+        console.log("Error adding new drink");
       }
     });
   }

@@ -1,4 +1,4 @@
-6044
+6046
 110C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\binary-extensions133601703509811763 1
 122C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\csso\lib\restructure\index.js133601692885610230 0
 120C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\source-map\lib\array-set.js133601692191499710 0
@@ -18,7 +18,7 @@
 134C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\shadowdomv1.js133601694687503716 0
 119C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\lib\syntax\config133601693757413202 1
 164C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\css-select\lib\pseudo-selectors133601692575260704 1
-94C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\admin.html133604341724965131 0
+94C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\admin.html133606748485969758 0
 92C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\package.json133602503165587874 0
 115C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\picomatch\package.json133601692248255685 0
 110C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@msgpackr-extract133601703625276529 1
@@ -44,7 +44,7 @@
 146C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\csso\node_modules\css-tree\lib\syntax\node\AnPlusB.js133601693106573483 0
 159C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\definition-syntax133601693112295047 1
 122C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\svgo\plugins\removeViewBox.js133601692940581151 0
-84C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist133604375052067371 1
+84C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist133606752342456148 1
 144C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\cjs\_iterable_to_array_limit_loose.cjs133601692731060525 0
 121C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\posthtml-parser\changelog.md133601692204905147 0
 110C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\boolbase\index.js133601692105451321 0
@@ -70,7 +70,7 @@
 135C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\esm\_await_async_generator.js133601693010779810 0
 115C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\dom-serializer\LICENSE133601692071479395 0
 119C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\utility-types\package.json133601692215762237 0
-100C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js\updateMenu.js133604375019885441 0
+100C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js\updateMenu.js133606751804349303 0
 144C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\workers\test\integration\workerfarm\echo.js133601692377179403 0
 103C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js\registerAdmin.js133604191991705175 0
 92C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules133601703625644034 1
@@ -89,7 +89,7 @@
 87C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css133601700755568524 1
 110C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\csso\node_modules133601691919001653 1
 149C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\csso\node_modules\css-tree\lib\generator\token-before.js133601693664993695 0
-97C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\main.scss133604114168065355 0
+97C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\main.scss133606752154267378 0
 133C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\runtime-browser-hmr\package.json133601692255963939 0
 112C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\fill-range\index.js133601692086657481 0
 128C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\update-browserslist-db\package.json133601692211073740 0
@@ -117,7 +117,7 @@
 112C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\parser133601693047274771 1
 104C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\pages\index.scss133604042204985734 0
 129C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\csso\node_modules\css-tree\cjs\utils133601693048685306 1
-86C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js133604177433664476 1
+86C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js133606706244551200 1
 140C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\css-logical-props.js133601693332905145 0
 172C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\source-map\parcel_sourcemap_wasm\dist-web\parcel_sourcemap_wasm_bg.wasm133601692958828629 0
 109C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\msgpackr\pack.js133601692374686132 0
@@ -132,6 +132,10 @@
 113C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\semver\ranges\gtr.js133601692342388957 0
 133C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\css-sticky.js133601693611572391 0
 93C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\menu.html133604124515338930 0
+141C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\entities\lib\escape.d.ts133601692786995626 0
+97C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js\addMenu.js133606750675933227 0
+150C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@babel\highlight\node_modules\supports-color\package.json133601692074429584 0
+106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\layout\footer.scss133604345847342620 0
 98C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@lmdb133601703625306308 1
 106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\dotenv-expand133601692185241737 1
 131C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\syntax\node\Dimension.cjs133601692573234314 0
@@ -172,7 +176,7 @@
 146C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domutils\lib\esm\stringify.js133601692333701985 0
 124C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\_\_new_arrow_check133601693834962502 1
 120C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\source-map-js\lib\base64.js133601692141522938 0
-94C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js\main.js133604369946073759 0
+94C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\js\main.js133606746361377285 0
 103C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\nullthrows133601692195468506 1
 135C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\input-search.js133601694112479184 0
 97C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\abstracts133601700755498980 1
@@ -212,8 +216,6 @@
 104C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\layout\body.scss133601706748396691 0
 128C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\lmdb\dependencies\lz4\lib\lz4file.h133601693027934676 0
 121C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\lib\parser\index.js133601693420208026 0
-150C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@babel\highlight\node_modules\supports-color\package.json133601692074429584 0
-106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\layout\footer.scss133604345847342620 0
 122C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\svgo\plugins\convertColors.js133601692668669435 0
 107C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\tslib\tslib.js133601692195647308 0
 123C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\cache\src\constants.js133601692120132738 0
@@ -292,7 +294,6 @@
 141C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\src\_initializer_warning_helper.mjs133601694076619967 0
 152C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-svgo\node_modules\svgo\lib\stringifier.js133601692820904655 0
 101C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\chokidar133601703510368018 1
-104C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\cosmiconfig133601692614109885 1
 111C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\chrome-trace-event133601692215931124 1
 118C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\is-arrayish\.editorconfig133601692211471060 0
 125C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\syntax\node\CDC.cjs133601692299670480 0
@@ -317,6 +318,7 @@
 148C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\cjs\_class_check_private_static_access.cjs133601692383685718 0
 152C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\mdb_dump.1133601692446291240 0
 127C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\cosmiconfig\dist\readFile.d.ts.map133601692571436393 0
+104C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\cosmiconfig133601692614109885 1
 103C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select133601692803395508 1
 147C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\esm\_class_check_private_static_access.js133601693033606557 0
 131C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\dom-serializer\lib\esm\foreignNames.js133601692097971518 0
@@ -1154,7 +1156,7 @@
 138C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\matchesselector.js133601694258469008 0
 129C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\hidden.js133601694032138637 0
 155C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\posthtml\node_modules\posthtml-parser\dist\location-tracker.js133601692148844628 0
-106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.18dbc454.js.map133604375051252797 0
+106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.18dbc454.js.map133606752208156356 0
 133C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\csso\cjs\replace\property\background.cjs133601692326291752 0
 127C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\avif.js133601692656187960 0
 130C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\svgo\plugins\moveGroupAttrsToElems.js133601692762594265 0
@@ -2285,9 +2287,6 @@
 124C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\regions\BM.js133601692839162071 0
 142C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest3.c133601692845668399 0
 132C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\shadowdom.js133601694686271968 0
-157C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\function133601693107457552 1
-151C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\_\_class_private_field_loose_key\package.json133601693642315963 0
-124C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\lib\convertor\index.js133601693397327166 0
 142C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\test\fixtures\custom-targets-distdir133601693394178328 1
 142C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest4.c133601692859684302 0
 129C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\generator\sourceMap.cjs133601693027010820 0
@@ -2303,6 +2302,7 @@
 146C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domutils\lib\esm\index.js.map133601692503338251 0
 118C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\lines-and-columns\LICENSE133601692071598596 0
 127C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\lines-and-columns\build\index.d.ts133601692160512503 0
+104C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\src\css\pages\admin.scss133606752328166770 0
 136C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\tokenizer\OffsetToLocation.cjs133601692949699914 0
 134C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\_\_skip_first_generator_next133601693860669907 1
 113C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\lightningcss\LICENSE133601692072800527 0
@@ -3388,6 +3388,9 @@
 150C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\index.js133601692550109569 0
 136C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\lib\definition-syntax\tokenizer.js133601693704160721 0
 125C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\lib\convertor\create.js133601693181341448 0
+157C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\function133601693107457552 1
+151C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\_\_class_private_field_loose_key\package.json133601693642315963 0
+124C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\lib\convertor\index.js133601693397327166 0
 121C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\dist\csstree.esm.js133601693228922004 0
 118C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\dist\version.cjs133601693107437674 0
 149C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\runtime-react-refresh\src\ReactRefreshRuntime.js133601692120589664 0
@@ -3499,7 +3502,7 @@
 131C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\dist\unpacker\features.js133601693871338272 0
 153C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\test\fixtures\local-plugin-config-pkg\.parcelrc133601692327185748 0
 134C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\syntax\node\UnicodeRange.cjs133601693058767615 0
-107C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.8c1c22dc.css.map133604375051252797 0
+107C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.8c1c22dc.css.map133606752342226143 0
 127C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\syntax\node\Value.cjs133601693078803074 0
 136C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\_\_is_native_reflect_construct133601693816417009 1
 142C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-tree\cjs\syntax\node\common\feature-range.cjs133601692605795681 0
@@ -3587,7 +3590,6 @@
 137C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\workers\src\threads\ThreadsWorker.js133601692591392396 0
 139C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\entities\lib\encode.js133601692334079462 0
 143C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\entities\lib\encode.js.map133601692635914068 0
-141C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\entities\lib\escape.d.ts133601692786995626 0
 133C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\entities\lib\esm133601692797296468 1
 139C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\entities\lib\generated133601692763696867 1
 144C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\entities\lib\index.d.ts.map133601692673367863 0
@@ -3700,7 +3702,7 @@
 150C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domutils\lib\esm\traversal.js.map133601692656237608 0
 131C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\src\_write_only_error.mjs133601694153573281 0
 140C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domhandler\package.json133601692244451228 0
-95C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\login.html133604375048799244 0
+95C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\login.html133606752208496339 0
 121C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\resolver-default\lib133601692088614367 1
 117C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\esm\_jsx.js133601693178738950 0
 146C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\test\fixtures\config\subfolder\.parcelrc133601692303763007 0
@@ -3710,7 +3712,7 @@
 133C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@swc\helpers\cjs\_is_native_function.cjs133601692718971670 0
 141C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\caniuse-lite\data\features\css-cascade-layers.js133601693130324007 0
 139C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domhandler\lib\node.js133601692207746072 0
-95C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\index.html133604375048918477 0
+95C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\index.html133606752203430990 0
 146C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domhandler\lib\esm\index.d.ts133601692326500335 0
 145C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domhandler\lib\esm\node.d.ts133601692344693483 0
 149C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\node_modules\domhandler\lib\esm\node.d.ts.map133601692284979119 0
@@ -3813,8 +3815,6 @@
 145C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\lib\esm\pseudo-selectors\pseudos.d.ts.map133601692697863399 0
 139C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\lib\esm\pseudo-selectors\pseudos.js133601692375093410 0
 144C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\lib\esm\pseudo-selectors\subselects.d.ts133601692926505623 0
-165C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\sortDefsChildren.js133601692808848896 0
-112C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\packager-js133601692414876869 1
 151C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\convertor133601692767531116 1
 121C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\watcher\package.json133601692158327159 0
 148C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\css-select\lib\esm\pseudo-selectors\subselects.d.ts.map133601692751647790 0
@@ -4872,6 +4872,8 @@
 114C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-swc133601692145903734 1
 155C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-svgo\node_modules\csso\lib\replace\Number.js133601692596498107 0
 114C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\packager-html133601692150841202 1
+165C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\sortDefsChildren.js133601692808848896 0
+112C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\packager-js133601692414876869 1
 113C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\packager-raw133601692150652482 1
 114C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\packager-wasm133601692215722515 1
 113C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\reporter-cli133601692340978442 1
@@ -5603,7 +5605,7 @@
 146C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\bin\svgo133601692100742912 0
 129C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\lib\loadParcelPlugin.js133601692949620425 0
 145C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\mdn-data\api133601692318345105 1
-102C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.18dbc454.js133604375048838995 0
+102C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.18dbc454.js133606752204956354 0
 159C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\replace\String.js133601692639807929 0
 146C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\mdn-data\l10n133601692247739214 1
 154C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\optimizer-htmlnano\node_modules\mdn-data\package.json133601692334049661 0
@@ -5883,7 +5885,7 @@
 122C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\src\constants.js133601692750634566 0
 123C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\src\loadDotEnv.js133601692948567494 0
 127C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\src\PackagerRunner.js133601693004333079 0
-95C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.html133604359107735474 0
+95C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.html133606752208516355 0
 119C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\src\Parcel.js133601693015587532 0
 132C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\src\ParcelConfig.schema.js133601693038146172 0
 116C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\node_modules\@parcel\core\src\public133601693189645703 1
@@ -6037,9 +6039,9 @@
 102C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.0e74c27c.js133604341498063669 0
 106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.0e74c27c.js.map133604341523413507 0
 106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.870c3d4e.js.map133602511117473143 0
-102C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.882a59c0.js133604353665546974 0
-106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.882a59c0.js.map133604375051928255 0
-103C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.8c1c22dc.css133604375048908541 0
 116C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.8c1c22dc.css.map.18304.dv133604116984603331 0
-102C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\icon.d5de67d9.png133604375048987987 0
-94C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\menu.html133604375048838995 0
+102C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.882a59c0.js133606752203421006 0
+94C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\menu.html133606752203430990 0
+102C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\icon.d5de67d9.png133606752204996381 0
+106C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.882a59c0.js.map133606752206576357 0
+103C:\Users\nygar\OneDrive\Skrivbord\Backend-baserad webb\Projekt\projekt-webbsida\dist\admin.8c1c22dc.css133606752341846176 0
