@@ -589,6 +589,7 @@ var _displayMenu = require("./displayMenu");
 var _registerAdmin = require("./registerAdmin");
 var _updateMenu = require("./updateMenu");
 var _addMenu = require("./addMenu");
+var _registerSubscriber = require("./registerSubscriber");
 document.addEventListener("DOMContentLoaded", ()=>{
     //Variables
     const loginForm = document.getElementById("login-form");
@@ -610,10 +611,30 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const addDrinkDescriptionEl = document.getElementById("addDrinkDescription");
     const addDrinkPriceEl = document.getElementById("addDrinkPrice");
     const addDrinkEl = document.getElementById("addDrink");
+    const firstnameSubEl = document.getElementById("firstnameSub");
+    const lastnameSubEl = document.getElementById("lastnameSub");
+    const emailSubEl = document.getElementById("emailSub");
+    const addressSubEl = document.getElementById("addressSub");
     // Display menu if on menu page
     if (window.location.pathname.includes("menu")) {
         (0, _displayMenu.displayCourses)();
         (0, _displayMenu.displayDrinks)();
+    }
+    //If on index page
+    if (window.location.pathname.includes("index")) {
+        const subscribeEl = document.getElementById("subscribe");
+        subscribeEl.addEventListener("click", async function() {
+            event.preventDefault();
+            const firstname = firstnameSubEl.value;
+            const lastname = lastnameSubEl.value;
+            const email = emailSubEl.value;
+            const address = addressSubEl.value;
+            try {
+                await (0, _registerSubscriber.registerSubscriber)(firstname, lastname, email, address);
+            } catch (error) {
+                console.log("Error during subscription...", error);
+            }
+        });
     }
     // If on login page
     if (window.location.pathname.includes("login")) loginForm.addEventListener("submit", async (event1)=>{
@@ -677,7 +698,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 });
 
-},{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG","./registerAdmin":"7KAcC","./updateMenu":"e1R4P","./addMenu":"iXZ8Y"}],"8Ahzo":[function(require,module,exports) {
+},{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG","./registerAdmin":"7KAcC","./updateMenu":"e1R4P","./addMenu":"iXZ8Y","./registerSubscriber":"1Vfy5"}],"8Ahzo":[function(require,module,exports) {
 //Login admin
 //Variables
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -926,7 +947,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // Display courses
 parcelHelpers.export(exports, "displayCoursesAdmin", ()=>displayCoursesAdmin);
-//Display drinks
+// Display drinks
 parcelHelpers.export(exports, "displayDrinksAdmin", ()=>displayDrinksAdmin);
 var _getData = require("./getData");
 async function displayCoursesAdmin() {
@@ -1040,13 +1061,12 @@ async function displayDrinksAdmin() {
     drinks.menu.forEach((drink, index)=>{
         // Generate unique IDs for each input
         const drinknameId = `drinkname-${index}`;
-        const descriptionId = `description-${index}`;
-        const priceId = `price-${index}`;
-        const categoryId = `category-${index}`;
+        const drinkDescriptionId = `drink-description-${index}`;
+        const drinkPriceId = `drink-price-${index}`;
         // Drinkname
         const drinknameLabel = document.createElement("label");
         drinknameLabel.setAttribute("for", drinknameId);
-        drinknameLabel.textContent = `Matr\xe4tt: ${drink.drinkname}`;
+        drinknameLabel.textContent = `Dryck: ${drink.drinkname}`;
         const drinknameInput = document.createElement("input");
         drinknameInput.setAttribute("type", "text");
         drinknameInput.setAttribute("id", drinknameId);
@@ -1054,39 +1074,39 @@ async function displayDrinksAdmin() {
         drinknameInput.value = drink.drinkname;
         // Description
         const descriptionLabel = document.createElement("label");
-        descriptionLabel.setAttribute("for", descriptionId);
+        descriptionLabel.setAttribute("for", drinkDescriptionId);
         descriptionLabel.textContent = `Beskrivning: ${drink.description}`;
         const descriptionInput = document.createElement("input");
         descriptionInput.setAttribute("type", "text");
-        descriptionInput.setAttribute("id", descriptionId);
-        descriptionInput.setAttribute("name", "descriptionAdmin");
+        descriptionInput.setAttribute("id", drinkDescriptionId);
+        descriptionInput.setAttribute("name", "descriptionDrinkAdmin");
         descriptionInput.value = drink.description;
         // Price
         const priceLabel = document.createElement("label");
-        priceLabel.setAttribute("for", priceId);
+        priceLabel.setAttribute("for", drinkPriceId);
         priceLabel.textContent = `Pris: ${drink.price} kr`;
         const priceInput = document.createElement("input");
         priceInput.setAttribute("type", "text");
-        priceInput.setAttribute("id", priceId);
-        priceInput.setAttribute("name", "priceAdmin");
+        priceInput.setAttribute("id", drinkPriceId);
+        priceInput.setAttribute("name", "priceDrinkAdmin");
         priceInput.value = drink.price;
         // Submit
         const updateDrinkSubmitEl = document.createElement("input");
         updateDrinkSubmitEl.setAttribute("type", "submit");
         updateDrinkSubmitEl.setAttribute("id", `update-drink-${index}`);
         updateDrinkSubmitEl.value = "Uppdatera";
-        //Onclick for update button
+        // Onclick for update button
         updateDrinkSubmitEl.onclick = function() {
             event.preventDefault();
             updateDrink(index, drink.id);
             alert("Dryck uppdaterad!");
         };
-        //Delete
+        // Delete
         const deleteDrinkSubmitEl = document.createElement("input");
         deleteDrinkSubmitEl.setAttribute("type", "submit");
         deleteDrinkSubmitEl.setAttribute("id", `delete-drink-${index}`);
         deleteDrinkSubmitEl.value = "Radera";
-        //Onclick for delete button
+        // Onclick for delete button
         deleteDrinkSubmitEl.onclick = function() {
             event.preventDefault();
             deleteDrink(index, drink.id);
@@ -1154,12 +1174,12 @@ async function deleteCourse(index, id) {
         })
     });
 }
-//Update drinks
+// Update drinks
 async function updateDrink(index, id) {
     const url = `http://localhost:3000/api/drinks/${id}`;
     const drinkname = document.getElementById(`drinkname-${index}`).value;
-    const description = document.getElementById(`description-${index}`).value;
-    const price = document.getElementById(`price-${index}`).value;
+    const description = document.getElementById(`drink-description-${index}`).value;
+    const price = document.getElementById(`drink-price-${index}`).value;
     const response = await fetch(url, {
         method: "PUT",
         headers: {
@@ -1172,12 +1192,12 @@ async function updateDrink(index, id) {
         })
     });
 }
-//Delete drinks
+// Delete drinks
 async function deleteDrink(index, id) {
     const url = `http://localhost:3000/api/drinks/${id}`;
     const drinkname = document.getElementById(`drinkname-${index}`).value;
-    const description = document.getElementById(`description-${index}`).value;
-    const price = document.getElementById(`price-${index}`).value;
+    const description = document.getElementById(`drink-description-${index}`).value;
+    const price = document.getElementById(`drink-price-${index}`).value;
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -1235,6 +1255,57 @@ async function addDrink(drinkname, description, price) {
         });
     } catch (error) {
         console.log("Error adding new drink");
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1Vfy5":[function(require,module,exports) {
+//Register new admin
+//Variables
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "registerSubscriber", ()=>registerSubscriber);
+const errMessageSubscriberEl = document.getElementById("errMessageSubscribe");
+errMessageSubscriberEl.setAttribute("id", "errMessageFail");
+async function registerSubscriber(firstname, lastname, email, address) {
+    try {
+        //Validation
+        //If any input field is empty
+        if (!firstname || !lastname || !email || !address) errMessageSubscriberEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i.";
+        //Invalid email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            errMessageSubscriberEl.textContent = "Ogiltig email-adress.";
+            return;
+        }
+        const url = "http://localhost:3000/api/subscribers";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                firstname,
+                lastname,
+                email,
+                address
+            })
+        });
+        //If register succeeds
+        if (!response.ok) errMessageSubscriberEl.textContent = "Kunde inte registrera prenumeration.";
+        //Return result
+        const data = await response.json();
+        alert("Du prenumererar nu p\xe5 nyhetsbrevet!");
+        let firstnameEl = document.getElementById("firstname");
+        let lastnameEl = document.getElementById("lastname");
+        let emailEl = document.getElementById("email");
+        let addressEl = document.getElementById("address");
+        firstnameEl.value = "";
+        lastnameEl.value = "";
+        emailEl.value = "";
+        addressEl.value = "";
+        return data;
+    } catch (error) {
+        errMessageSubscriberEl.textContent = "N\xe5got gick fel...";
     }
 }
 

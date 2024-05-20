@@ -3,6 +3,7 @@ import { displayCourses, displayDrinks } from "./displayMenu";
 import { registerAdmin } from "./registerAdmin";
 import { displayCoursesAdmin, displayDrinksAdmin } from "./updateMenu";
 import { addCourse, addDrink } from "./addMenu";
+import { registerSubscriber } from "./registerSubscriber";
 
 document.addEventListener("DOMContentLoaded", () => {
   //Variables
@@ -31,10 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const addDrinkPriceEl = document.getElementById("addDrinkPrice");
   const addDrinkEl = document.getElementById("addDrink");
 
+  const firstnameSubEl = document.getElementById("firstnameSub");
+  const lastnameSubEl = document.getElementById("lastnameSub");
+  const emailSubEl = document.getElementById("emailSub");
+  const addressSubEl = document.getElementById("addressSub");
+
   // Display menu if on menu page
   if (window.location.pathname.includes("menu")) {
     displayCourses();
     displayDrinks();
+  }
+
+  //If on index page
+  if (window.location.pathname.includes("index")) {
+    const subscribeEl = document.getElementById("subscribe");
+
+    subscribeEl.addEventListener("click", async function () {
+      event.preventDefault();
+
+      const firstname = firstnameSubEl.value;
+      const lastname = lastnameSubEl.value;
+      const email = emailSubEl.value;
+      const address = addressSubEl.value;
+
+      try {
+        await registerSubscriber(firstname, lastname, email, address);
+      } catch (error) {
+        console.log("Error during subscription...", error);
+      }
+    });
   }
 
   // If on login page

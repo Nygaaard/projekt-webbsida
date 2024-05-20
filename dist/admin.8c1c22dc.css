@@ -75,6 +75,11 @@ input[type="submit"]:hover {
   display: flex;
 }
 
+.subscribe-form {
+  width: 30%;
+  margin: 0 auto;
+}
+
 header {
   justify-content: space-between;
   align-items: center;
@@ -129,6 +134,14 @@ h1 {
 .info-div {
   width: 70%;
   margin: 0 auto;
+}
+
+.subscribe-section {
+  margin-top: 100px;
+}
+
+.mid {
+  text-align: center;
 }
 
 section {

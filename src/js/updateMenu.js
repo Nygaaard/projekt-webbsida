@@ -116,7 +116,7 @@ export async function displayCoursesAdmin() {
   });
 }
 
-//Display drinks
+// Display drinks
 export async function displayDrinksAdmin() {
   const drinks = await getDrinks();
 
@@ -132,14 +132,13 @@ export async function displayDrinksAdmin() {
   drinks.menu.forEach((drink, index) => {
     // Generate unique IDs for each input
     const drinknameId = `drinkname-${index}`;
-    const descriptionId = `description-${index}`;
-    const priceId = `price-${index}`;
-    const categoryId = `category-${index}`;
+    const drinkDescriptionId = `drink-description-${index}`;
+    const drinkPriceId = `drink-price-${index}`;
 
     // Drinkname
     const drinknameLabel = document.createElement("label");
     drinknameLabel.setAttribute("for", drinknameId);
-    drinknameLabel.textContent = `Maträtt: ${drink.drinkname}`;
+    drinknameLabel.textContent = `Dryck: ${drink.drinkname}`;
 
     const drinknameInput = document.createElement("input");
     drinknameInput.setAttribute("type", "text");
@@ -149,24 +148,24 @@ export async function displayDrinksAdmin() {
 
     // Description
     const descriptionLabel = document.createElement("label");
-    descriptionLabel.setAttribute("for", descriptionId);
+    descriptionLabel.setAttribute("for", drinkDescriptionId);
     descriptionLabel.textContent = `Beskrivning: ${drink.description}`;
 
     const descriptionInput = document.createElement("input");
     descriptionInput.setAttribute("type", "text");
-    descriptionInput.setAttribute("id", descriptionId);
-    descriptionInput.setAttribute("name", "descriptionAdmin");
+    descriptionInput.setAttribute("id", drinkDescriptionId);
+    descriptionInput.setAttribute("name", "descriptionDrinkAdmin");
     descriptionInput.value = drink.description;
 
     // Price
     const priceLabel = document.createElement("label");
-    priceLabel.setAttribute("for", priceId);
+    priceLabel.setAttribute("for", drinkPriceId);
     priceLabel.textContent = `Pris: ${drink.price} kr`;
 
     const priceInput = document.createElement("input");
     priceInput.setAttribute("type", "text");
-    priceInput.setAttribute("id", priceId);
-    priceInput.setAttribute("name", "priceAdmin");
+    priceInput.setAttribute("id", drinkPriceId);
+    priceInput.setAttribute("name", "priceDrinkAdmin");
     priceInput.value = drink.price;
 
     // Submit
@@ -174,19 +173,19 @@ export async function displayDrinksAdmin() {
     updateDrinkSubmitEl.setAttribute("type", "submit");
     updateDrinkSubmitEl.setAttribute("id", `update-drink-${index}`);
     updateDrinkSubmitEl.value = "Uppdatera";
-    //Onclick for update button
+    // Onclick for update button
     updateDrinkSubmitEl.onclick = function () {
       event.preventDefault();
       updateDrink(index, drink.id);
       alert("Dryck uppdaterad!");
     };
 
-    //Delete
+    // Delete
     const deleteDrinkSubmitEl = document.createElement("input");
     deleteDrinkSubmitEl.setAttribute("type", "submit");
     deleteDrinkSubmitEl.setAttribute("id", `delete-drink-${index}`);
     deleteDrinkSubmitEl.value = "Radera";
-    //Onclick for delete button
+    // Onclick for delete button
     deleteDrinkSubmitEl.onclick = function () {
       event.preventDefault();
       deleteDrink(index, drink.id);
@@ -252,13 +251,15 @@ async function deleteCourse(index, id) {
   });
 }
 
-//Update drinks
+// Update drinks
 async function updateDrink(index, id) {
   const url = `http://localhost:3000/api/drinks/${id}`;
 
   const drinkname = document.getElementById(`drinkname-${index}`).value;
-  const description = document.getElementById(`description-${index}`).value;
-  const price = document.getElementById(`price-${index}`).value;
+  const description = document.getElementById(
+    `drink-description-${index}`
+  ).value;
+  const price = document.getElementById(`drink-price-${index}`).value;
 
   const response = await fetch(url, {
     method: "PUT",
@@ -269,13 +270,15 @@ async function updateDrink(index, id) {
   });
 }
 
-//Delete drinks
+// Delete drinks
 async function deleteDrink(index, id) {
   const url = `http://localhost:3000/api/drinks/${id}`;
 
   const drinkname = document.getElementById(`drinkname-${index}`).value;
-  const description = document.getElementById(`description-${index}`).value;
-  const price = document.getElementById(`price-${index}`).value;
+  const description = document.getElementById(
+    `drink-description-${index}`
+  ).value;
+  const price = document.getElementById(`drink-price-${index}`).value;
 
   const response = await fetch(url, {
     method: "DELETE",
