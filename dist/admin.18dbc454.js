@@ -591,6 +591,7 @@ var _updateMenu = require("./updateMenu");
 var _addMenu = require("./addMenu");
 var _registerSubscriber = require("./registerSubscriber");
 document.addEventListener("DOMContentLoaded", ()=>{
+    console.log("http://localhost:1234");
     //Variables
     const loginForm = document.getElementById("login-form");
     const registerForm = document.getElementById("register-form");
@@ -621,7 +622,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         (0, _displayMenu.displayDrinks)();
     }
     //If on index page
-    if (window.location.pathname.includes("index") || window.location.pathname.includes("")) {
+    if (window.location.pathname.includes("index") || window.location.href === "http://localhost:1234") {
         const subscribeEl = document.getElementById("subscribe");
         subscribeEl.addEventListener("click", async function() {
             event.preventDefault();
@@ -631,17 +632,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
             const address = addressSubEl.value;
             try {
                 await (0, _registerSubscriber.registerSubscriber)(firstname, lastname, email, address);
-                window.location.href = "http://localhost:1234";
             } catch (error) {
                 console.log("Error during subscription...", error);
             }
         });
     }
     // If on login page
-    if (window.location.pathname.includes("login") || window.location.pathname.includes("")) loginForm.addEventListener("submit", async (event1)=>{
+    if (window.location.pathname.includes("login")) loginForm.addEventListener("submit", async (event1)=>{
         event1.preventDefault();
         const username = userNameLoginEl.value;
         const password = passwordLoginEl.value;
+        console.log("Hej");
         // Clear previous error messages
         errorMessageEl.textContent = "";
         try {
@@ -651,7 +652,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
     });
     // If on admin page
-    if (window.location.pathname.includes("admin") || window.location.pathname.includes("")) {
+    if (window.location.pathname.includes("admin")) {
         (0, _updateMenu.displayCoursesAdmin)();
         (0, _updateMenu.displayDrinksAdmin)();
         //Register new user on admin page

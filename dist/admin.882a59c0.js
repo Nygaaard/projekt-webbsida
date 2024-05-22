@@ -1,6 +1,6 @@
-const apiUrl = process.env.API_URL;
 //Validate user
 document.addEventListener("DOMContentLoaded", async ()=>{
+    const apiUrl = process.env.API_URL;
     const token = localStorage.getItem("token");
     const validateUrl = `${apiUrl}/api/protected`;
     if (!token) {

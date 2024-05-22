@@ -24,7 +24,7 @@
         <div class="form-container">
           <section class="login-section">
             <h2 class="form-header">Logga in</h2>
-            <form action="post" class="login-form" id="login-form">
+            <form method="post" class="login-form" id="login-form">
               <label for="userNameLogin">Användarnamn:</label>
               <br>
               <input type="text" id="userNameLogin" name="userName">
@@ -33,7 +33,7 @@
               <br>
               <input type="passWord" id="passWordLogin" name="passWord">
               <br>
-              <input type="submit" id="login" value="Logga in" class="button">
+              <button type="submit" id="login" class="button">Logga in</button>
             </form>
           </section>
           <div id="errMessageLog"></div>

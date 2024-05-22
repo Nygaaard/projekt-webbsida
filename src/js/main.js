@@ -6,6 +6,7 @@ import { addCourse, addDrink } from "./addMenu";
 import { registerSubscriber } from "./registerSubscriber";
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log(process.env.INDEX);
   //Variables
   const loginForm = document.getElementById("login-form");
   const registerForm = document.getElementById("register-form");
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //If on index page
   if (
     window.location.pathname.includes("index") ||
-    window.location.pathname.includes("")
+    window.location.href === process.env.INDEX
   ) {
     const subscribeEl = document.getElementById("subscribe");
 
@@ -60,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         await registerSubscriber(firstname, lastname, email, address);
-        window.location.href = process.env.INDEX;
       } catch (error) {
         console.log("Error during subscription...", error);
       }
@@ -68,15 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // If on login page
-  if (
-    window.location.pathname.includes("login") ||
-    window.location.pathname.includes("")
-  ) {
+  if (window.location.pathname.includes("login")) {
     loginForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const username = userNameLoginEl.value;
       const password = passwordLoginEl.value;
+
+      console.log("Hej");
 
       // Clear previous error messages
       errorMessageEl.textContent = "";
@@ -90,10 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // If on admin page
-  if (
-    window.location.pathname.includes("admin") ||
-    window.location.pathname.includes("")
-  ) {
+  if (window.location.pathname.includes("admin")) {
     displayCoursesAdmin();
     displayDrinksAdmin();
     //Register new user on admin page
