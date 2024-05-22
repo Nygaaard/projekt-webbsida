@@ -1,5 +1,7 @@
 //Login admin
 
+const apiUrl = process.env.API_URL;
+
 //Variables
 const errMessageLogEl = document.getElementById("errMessageLog");
 const errmessageFailEl = document.getElementById("errMessageFail");
@@ -25,7 +27,7 @@ export async function loginAdmin(username, password) {
         "Både användarnamn och lösenord måste fyllas i ";
     }
 
-    const url = "http://localhost:3000/api/login";
+    const url = `${apiUrl}/api/login`;
 
     const response = await fetch(url, {
       method: "POST",
@@ -60,7 +62,7 @@ export async function loginAdmin(username, password) {
 
 //Validate user
 export async function validateUser(token) {
-  const url = "http://localhost:3000/api/protected";
+  const url = `${apiUrl}/api/protected`;
   const response = await fetch(url, {
     method: "GET",
     headers: {

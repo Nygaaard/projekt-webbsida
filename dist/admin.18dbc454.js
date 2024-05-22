@@ -699,12 +699,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 },{"./loginAdmin":"8Ahzo","./displayMenu":"gUxyG","./registerAdmin":"7KAcC","./updateMenu":"e1R4P","./addMenu":"iXZ8Y","./registerSubscriber":"1Vfy5"}],"8Ahzo":[function(require,module,exports) {
 //Login admin
-//Variables
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "loginAdmin", ()=>loginAdmin);
 //Validate user
 parcelHelpers.export(exports, "validateUser", ()=>validateUser);
+const apiUrl = "http://localhost:3000";
+//Variables
 const errMessageLogEl = document.getElementById("errMessageLog");
 const errmessageFailEl = document.getElementById("errMessageFail");
 const errMessage = sessionStorage.getItem("failedLogin");
@@ -719,7 +720,7 @@ async function loginAdmin(username, password) {
             if (!password) errMessageLogEl.textContent = "Fyll i l\xf6senordet";
             errMessageLogEl.textContent = "B\xe5de anv\xe4ndarnamn och l\xf6senord m\xe5ste fyllas i ";
         }
-        const url = "http://localhost:3000/api/login";
+        const url = `${apiUrl}/api/login`;
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -748,7 +749,7 @@ async function loginAdmin(username, password) {
     }
 }
 async function validateUser(token) {
-    const url = "http://localhost:3000/api/protected";
+    const url = `${apiUrl}/api/protected`;
     const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -858,14 +859,15 @@ async function displayDrinks() {
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./getData":"7kMqK"}],"7kMqK":[function(require,module,exports) {
-//Get data from courses table
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+//Get data from courses table
 parcelHelpers.export(exports, "getCourses", ()=>getCourses);
 //Get data from drinks table
 parcelHelpers.export(exports, "getDrinks", ()=>getDrinks);
+const apiUrl = "http://localhost:3000";
 async function getCourses() {
-    const url = "http://localhost:3000/api/courses";
+    const url = `${apiUrl}/api/courses`;
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -875,7 +877,7 @@ async function getCourses() {
     }
 }
 async function getDrinks() {
-    const url = "http://localhost:3000/api/drinks";
+    const url = `${apiUrl}/api/drinks`;
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -892,6 +894,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "registerAdmin", ()=>registerAdmin);
 const errMessageRegEl = document.getElementById("errMessageReg");
+const apiUrl = "http://localhost:3000";
 async function registerAdmin(firstname, lastname, email, username, password) {
     try {
         //Validation
@@ -916,7 +919,7 @@ async function registerAdmin(firstname, lastname, email, username, password) {
             errMessageRegEl.textContent = "L\xf6senordet m\xe5ste vara minst 8 tecken l\xe5ngt.";
             return;
         }
-        const url = "http://localhost:3000/api/register";
+        const url = `${apiUrl}/api/register`;
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -962,6 +965,7 @@ parcelHelpers.export(exports, "displayCoursesAdmin", ()=>displayCoursesAdmin);
 // Display drinks
 parcelHelpers.export(exports, "displayDrinksAdmin", ()=>displayDrinksAdmin);
 var _getData = require("./getData");
+const apiUrl = "http://localhost:3000";
 async function displayCoursesAdmin() {
     const courses = await (0, _getData.getCourses)();
     const updateFormEl = document.getElementById("update-form");
@@ -1148,7 +1152,7 @@ async function displayDrinksAdmin() {
 }
 //Update course
 async function updateCourse(index, id) {
-    const url = `http://localhost:3000/api/courses/${id}`;
+    const url = `${apiUrl}/api/courses/${id}`;
     const coursename = document.getElementById(`coursename-${index}`).value;
     const description = document.getElementById(`description-${index}`).value;
     const price = document.getElementById(`price-${index}`).value;
@@ -1232,10 +1236,11 @@ parcelHelpers.export(exports, "addCourse", ()=>addCourse);
 parcelHelpers.export(exports, "addDrink", ()=>addDrink);
 const addCourseErrMsgEl = document.getElementById("addCourseErrMsg");
 const addDrinkErrMsgEl = document.getElementById("addDrinkErrMsg");
+const apiUrl = "http://localhost:3000";
 async function addCourse(coursename, description, price, category) {
     try {
         if (!coursename || !description || !price || !category) addCourseErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
-        const url = "http://localhost:3000/api/courses";
+        const url = `${apiUrl}/api/courses`;
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -1255,7 +1260,7 @@ async function addCourse(coursename, description, price, category) {
 async function addDrink(drinkname, description, price) {
     try {
         if (!drinkname || !description || !price) addDrinkErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
-        const url = "http://localhost:3000/api/drinks";
+        const url = `${apiUrl}/api/drinks`;
         const response = await fetch(url, {
             method: "POST",
             headers: {

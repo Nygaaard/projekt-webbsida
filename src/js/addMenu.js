@@ -1,6 +1,8 @@
 const addCourseErrMsgEl = document.getElementById("addCourseErrMsg");
 const addDrinkErrMsgEl = document.getElementById("addDrinkErrMsg");
 
+const apiUrl = process.env.API_URL;
+
 //Function for adding courses
 export async function addCourse(coursename, description, price, category) {
   try {
@@ -8,7 +10,7 @@ export async function addCourse(coursename, description, price, category) {
       addCourseErrMsgEl.textContent = "Alla fält måste fyllas i";
     }
 
-    const url = "http://localhost:3000/api/courses";
+    const url = `${apiUrl}/api/courses`;
 
     const response = await fetch(url, {
       method: "POST",
@@ -34,7 +36,7 @@ export async function addDrink(drinkname, description, price) {
       addDrinkErrMsgEl.textContent = "Alla fält måste fyllas i";
     }
 
-    const url = "http://localhost:3000/api/drinks";
+    const url = `${apiUrl}/api/drinks`;
 
     const response = await fetch(url, {
       method: "POST",

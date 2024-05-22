@@ -3,6 +3,8 @@
 //Variables
 const errMessageRegEl = document.getElementById("errMessageReg");
 
+const apiUrl = process.env.API_URL;
+
 export async function registerAdmin(
   firstname,
   lastname,
@@ -39,7 +41,7 @@ export async function registerAdmin(
       return;
     }
 
-    const url = "http://localhost:3000/api/register";
+    const url = `${apiUrl}/api/register`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

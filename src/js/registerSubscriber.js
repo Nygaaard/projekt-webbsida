@@ -6,6 +6,8 @@ if (window.location.pathname.includes("index")) {
   errMessageSubscriberEl.classList.add("errMessageSub");
 }
 
+const apiUrl = process.env.API_URL;
+
 export async function registerSubscriber(firstname, lastname, email, address) {
   try {
     //Validation
@@ -22,7 +24,7 @@ export async function registerSubscriber(firstname, lastname, email, address) {
       return;
     }
 
-    const url = "http://localhost:3000/api/subscribers";
+    const url = `${apiUrl}/api/subscribers`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

@@ -1,6 +1,8 @@
 import { getCourses } from "./getData";
 import { getDrinks } from "./getData";
 
+const apiUrl = process.env.API_URL;
+
 // Display courses
 export async function displayCoursesAdmin() {
   const courses = await getCourses();
@@ -217,7 +219,7 @@ export async function displayDrinksAdmin() {
 
 //Update course
 async function updateCourse(index, id) {
-  const url = `http://localhost:3000/api/courses/${id}`;
+  const url = `${apiUrl}/api/courses/${id}`;
 
   const coursename = document.getElementById(`coursename-${index}`).value;
   const description = document.getElementById(`description-${index}`).value;
@@ -235,7 +237,7 @@ async function updateCourse(index, id) {
 
 //Delete course
 async function deleteCourse(index, id) {
-  const url = `http://localhost:3000/api/courses/${id}`;
+  const url = `${apiUrl}/api/courses/${id}`;
 
   const coursename = document.getElementById(`coursename-${index}`).value;
   const description = document.getElementById(`description-${index}`).value;
@@ -253,7 +255,7 @@ async function deleteCourse(index, id) {
 
 // Update drinks
 async function updateDrink(index, id) {
-  const url = `http://localhost:3000/api/drinks/${id}`;
+  const url = `${apiUrl}/api/drinks/${id}`;
 
   const drinkname = document.getElementById(`drinkname-${index}`).value;
   const description = document.getElementById(
@@ -272,7 +274,7 @@ async function updateDrink(index, id) {
 
 // Delete drinks
 async function deleteDrink(index, id) {
-  const url = `http://localhost:3000/api/drinks/${id}`;
+  const url = `${apiUrl}/api/drinks/${id}`;
 
   const drinkname = document.getElementById(`drinkname-${index}`).value;
   const description = document.getElementById(
