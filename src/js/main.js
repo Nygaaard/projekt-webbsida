@@ -68,7 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // If on login page
-  if (window.location.pathname.includes("login")) {
+  if (
+    window.location.pathname.includes("login") ||
+    window.location.pathname.includes("")
+  ) {
     loginForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
@@ -87,7 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // If on admin page
-  if (window.location.pathname.includes("admin")) {
+  if (
+    window.location.pathname.includes("admin") ||
+    window.location.pathname.includes("")
+  ) {
     displayCoursesAdmin();
     displayDrinksAdmin();
     //Register new user on admin page

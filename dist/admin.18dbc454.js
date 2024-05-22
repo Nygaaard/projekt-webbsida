@@ -621,7 +621,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         (0, _displayMenu.displayDrinks)();
     }
     //If on index page
-    if (window.location.pathname.includes("index")) {
+    if (window.location.pathname.includes("index") || window.location.pathname.includes("")) {
         const subscribeEl = document.getElementById("subscribe");
         subscribeEl.addEventListener("click", async function() {
             event.preventDefault();
@@ -631,13 +631,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
             const address = addressSubEl.value;
             try {
                 await (0, _registerSubscriber.registerSubscriber)(firstname, lastname, email, address);
+                window.location.href = "http://localhost:1234";
             } catch (error) {
                 console.log("Error during subscription...", error);
             }
         });
     }
     // If on login page
-    if (window.location.pathname.includes("login")) loginForm.addEventListener("submit", async (event1)=>{
+    if (window.location.pathname.includes("login") || window.location.pathname.includes("")) loginForm.addEventListener("submit", async (event1)=>{
         event1.preventDefault();
         const username = userNameLoginEl.value;
         const password = passwordLoginEl.value;
@@ -650,7 +651,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
     });
     // If on admin page
-    if (window.location.pathname.includes("admin")) {
+    if (window.location.pathname.includes("admin") || window.location.pathname.includes("")) {
         (0, _updateMenu.displayCoursesAdmin)();
         (0, _updateMenu.displayDrinksAdmin)();
         //Register new user on admin page
@@ -1172,7 +1173,7 @@ async function updateCourse(index, id) {
 }
 //Delete course
 async function deleteCourse(index, id) {
-    const url = `http://localhost:3000/api/courses/${id}`;
+    const url = `${apiUrl}/api/courses/${id}`;
     const coursename = document.getElementById(`coursename-${index}`).value;
     const description = document.getElementById(`description-${index}`).value;
     const price = document.getElementById(`price-${index}`).value;
@@ -1192,7 +1193,7 @@ async function deleteCourse(index, id) {
 }
 // Update drinks
 async function updateDrink(index, id) {
-    const url = `http://localhost:3000/api/drinks/${id}`;
+    const url = `${apiUrl}/api/drinks/${id}`;
     const drinkname = document.getElementById(`drinkname-${index}`).value;
     const description = document.getElementById(`drink-description-${index}`).value;
     const price = document.getElementById(`drink-price-${index}`).value;
@@ -1210,7 +1211,7 @@ async function updateDrink(index, id) {
 }
 // Delete drinks
 async function deleteDrink(index, id) {
-    const url = `http://localhost:3000/api/drinks/${id}`;
+    const url = `${apiUrl}/api/drinks/${id}`;
     const drinkname = document.getElementById(`drinkname-${index}`).value;
     const description = document.getElementById(`drink-description-${index}`).value;
     const price = document.getElementById(`drink-price-${index}`).value;
@@ -1285,6 +1286,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "registerSubscriber", ()=>registerSubscriber);
 const errMessageSubscriberEl = document.getElementById("errMessageSubscribe");
 if (window.location.pathname.includes("index")) errMessageSubscriberEl.classList.add("errMessageSub");
+const apiUrl = "http://localhost:3000";
 async function registerSubscriber(firstname, lastname, email, address) {
     try {
         //Validation
@@ -1299,7 +1301,7 @@ async function registerSubscriber(firstname, lastname, email, address) {
             errMessageSubscriberEl.textContent = "Ogiltig email-adress.";
             return;
         }
-        const url = "http://localhost:3000/api/subscribers";
+        const url = `${apiUrl}/api/subscribers`;
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -1320,17 +1322,19 @@ async function registerSubscriber(firstname, lastname, email, address) {
         //Return result
         const data = await response.json();
         alert("Du prenumererar nu p\xe5 nyhetsbrevet!");
-        let firstnameEl = document.getElementById("firstnameSub");
-        let lastnameEl = document.getElementById("lastnameSub");
-        let emailEl = document.getElementById("emailSub");
-        let addressEl = document.getElementById("addressSub");
-        if (firstnameEl && lastnameEl && emailEl && addressEl) {
-            // Clear input fields
-            firstnameEl.value = "";
-            lastnameEl.value = "";
-            emailEl.value = "";
-            addressEl.value = "";
-        } else console.error("One or more input elements not found");
+        // let firstnameEl = document.getElementById("firstnameSub");
+        // let lastnameEl = document.getElementById("lastnameSub");
+        // let emailEl = document.getElementById("emailSub");
+        // let addressEl = document.getElementById("addressSub");
+        // if (firstnameEl && lastnameEl && emailEl && addressEl) {
+        //   // Clear input fields
+        //   firstnameEl.value = "";
+        //   lastnameEl.value = "";
+        //   emailEl.value = "";
+        //   addressEl.value = "";
+        // } else {
+        //   console.error("One or more input elements not found");
+        // }
         return data;
     } catch (error) {
         console.log(error);

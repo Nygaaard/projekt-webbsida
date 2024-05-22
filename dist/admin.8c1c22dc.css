@@ -282,7 +282,7 @@ h1 {
 }
 
 @media (width <= 1000px) {
-  .info-div, .subscribe-section, .subscribe-form {
+  .info-div, .subscribe-section, .subscribe-form, .order-section, .location-section, .opening-hours-section {
     width: 80%;
   }
 }
@@ -294,6 +294,10 @@ h1 {
 
   .subscribe-form {
     width: 100%;
+  }
+
+  .order-section, .location-section, .opening-hours-section {
+    width: 80%;
   }
 }
 
