@@ -44,7 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //If on index page
-  if (window.location.pathname.includes("index")) {
+  if (
+    window.location.pathname.includes("index") ||
+    window.location.pathname.includes("")
+  ) {
     const subscribeEl = document.getElementById("subscribe");
 
     subscribeEl.addEventListener("click", async function () {
