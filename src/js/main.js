@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         await registerSubscriber(firstname, lastname, email, address);
+        window.location.href = proces.env.INDEX;
       } catch (error) {
         console.log("Error during subscription...", error);
       }
