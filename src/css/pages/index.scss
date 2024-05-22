@@ -131,6 +131,15 @@ h1 {
   .subscribe-form {
     width: 80%;
   }
+  .order-section {
+    width: 80%;
+  }
+  .location-section {
+    width: 80%;
+  }
+  .opening-hours-section {
+    width: 80%;
+  }
 }
 
 @media all and (max-width: 500px) {
@@ -142,5 +151,14 @@ h1 {
   }
   .subscribe-form {
     width: 100%;
+  }
+  .order-section {
+    width: 80%;
+  }
+  .location-section {
+    width: 80%;
+  }
+  .opening-hours-section {
+    width: 80%;
   }
 }
