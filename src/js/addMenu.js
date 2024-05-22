@@ -1,6 +1,7 @@
 const addCourseErrMsgEl = document.getElementById("addCourseErrMsg");
 const addDrinkErrMsgEl = document.getElementById("addDrinkErrMsg");
 
+//Function for adding courses
 export async function addCourse(coursename, description, price, category) {
   try {
     if (!coursename || !description || !price || !category) {
@@ -26,6 +27,7 @@ export async function addCourse(coursename, description, price, category) {
   }
 }
 
+//Function for adding drinks
 export async function addDrink(drinkname, description, price) {
   try {
     if (!drinkname || !description || !price) {

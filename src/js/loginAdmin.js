@@ -58,6 +58,7 @@ export async function loginAdmin(username, password) {
   }
 }
 
+//Validate user
 export async function validateUser(token) {
   const url = "http://localhost:3000/api/protected";
   const response = await fetch(url, {

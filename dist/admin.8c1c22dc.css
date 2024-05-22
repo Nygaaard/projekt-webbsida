@@ -90,7 +90,7 @@ input[type="submit"]:hover {
 }
 
 header {
-  background-color: #2c3e50;
+  background-color: #385169;
   justify-content: space-between;
   align-items: center;
   min-height: 100px;
@@ -109,13 +109,13 @@ header {
 }
 
 .menu li a {
-  color: #000;
+  color: coral;
   font-size: 1.5em;
   text-decoration: none;
 }
 
 .menu li a:hover {
-  color: #928181;
+  color: #f0ad4e;
 }
 
 @media (width <= 700px) {

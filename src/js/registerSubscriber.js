@@ -47,15 +47,20 @@ export async function registerSubscriber(firstname, lastname, email, address) {
     const data = await response.json();
     alert("Du prenumererar nu på nyhetsbrevet!");
 
-    let firstnameEl = document.getElementById("firstname");
-    let lastnameEl = document.getElementById("lastname");
-    let emailEl = document.getElementById("email");
-    let addressEl = document.getElementById("address");
+    let firstnameEl = document.getElementById("firstnameSub");
+    let lastnameEl = document.getElementById("lastnameSub");
+    let emailEl = document.getElementById("emailSub");
+    let addressEl = document.getElementById("addressSub");
 
-    firstnameEl.value = "";
-    lastnameEl.value = "";
-    emailEl.value = "";
-    addressEl.value = "";
+    if (firstnameEl && lastnameEl && emailEl && addressEl) {
+      // Clear input fields
+      firstnameEl.value = "";
+      lastnameEl.value = "";
+      emailEl.value = "";
+      addressEl.value = "";
+    } else {
+      console.error("One or more input elements not found");
+    }
 
     return data;
   } catch (error) {

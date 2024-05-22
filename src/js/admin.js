@@ -1,3 +1,4 @@
+//Validate user
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("token");
   const validateUrl = "http://localhost:3000/api/protected";

@@ -3,7 +3,7 @@ header {
   align-items: center;
   justify-content: space-between;
   min-height: 100px;
-  background-color: #2c3e50;
+  background-color: #385169;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -15,12 +15,12 @@ header {
   padding: 2rem;
 }
 .menu li a {
-  color: #000;
+  color: #ff7f50;
   text-decoration: none;
   font-size: 1.5em;
 }
 .menu li a:hover {
-  color: #928181;
+  color: #f0ad4e;
 }
 @media all and (max-width: 700px) {
   .menu li a {
