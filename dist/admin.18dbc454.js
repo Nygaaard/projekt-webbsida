@@ -860,7 +860,7 @@ async function displayDrinks() {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./getData":"7kMqK"}],"7kMqK":[function(require,module,exports) {
+},{"./getData":"7kMqK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7kMqK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 //Get data from courses table

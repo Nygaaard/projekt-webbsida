@@ -435,4 +435,19 @@ section h2 {
   text-align: center;
   margin-top: 10px;
 }
+
+.button {
+  box-sizing: border-box;
+  background-color: #3d3af1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin: 5px 0 15px;
+  padding: 10px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #45a049;
+}
 /*# sourceMappingURL=admin.8c1c22dc.css.map */
