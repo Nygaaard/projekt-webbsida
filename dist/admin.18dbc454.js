@@ -1263,6 +1263,7 @@ parcelHelpers.export(exports, "addDrink", ()=>addDrink);
 const addCourseErrMsgEl = document.getElementById("addCourseErrMsg");
 const addDrinkErrMsgEl = document.getElementById("addDrinkErrMsg");
 const apiUrl = "http://localhost:3000";
+const token = localStorage.getItem("token");
 async function addCourse(coursename, description, price, category) {
     if (!coursename || !description || !price || !category) {
         addCourseErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";

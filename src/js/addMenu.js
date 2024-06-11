@@ -2,6 +2,7 @@ const addCourseErrMsgEl = document.getElementById("addCourseErrMsg");
 const addDrinkErrMsgEl = document.getElementById("addDrinkErrMsg");
 
 const apiUrl = process.env.API_URL;
+const token = localStorage.getItem("token");
 
 //Function for adding courses
 export async function addCourse(coursename, description, price, category) {
