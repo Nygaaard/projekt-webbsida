@@ -444,7 +444,7 @@ section h2 {
   }
 }
 
-#errMessageReg, #errMessageLog, .errMessageSub {
+#errMessageReg, #errMessageLog, #errMessageSubscribe, .errMessageSub {
   color: red;
   text-align: center;
   margin-top: 10px;
