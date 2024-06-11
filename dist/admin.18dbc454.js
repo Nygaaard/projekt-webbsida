@@ -1200,7 +1200,8 @@ async function deleteCourse(index, id) {
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
         },
         body: JSON.stringify({
             coursename,
@@ -1220,7 +1221,8 @@ async function updateDrink(index, id) {
     const response = await fetch(url, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
         },
         body: JSON.stringify({
             drinkname,
@@ -1239,7 +1241,8 @@ async function deleteDrink(index, id) {
     const response = await fetch(url, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
         },
         body: JSON.stringify({
             drinkname,
@@ -1270,7 +1273,8 @@ async function addCourse(coursename, description, price, category) {
         const response = await fetch(url, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token
             },
             body: JSON.stringify({
                 coursename,
@@ -1294,7 +1298,8 @@ async function addDrink(drinkname, description, price) {
         const response = await fetch(url, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token
             },
             body: JSON.stringify({
                 drinkname,

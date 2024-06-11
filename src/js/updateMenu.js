@@ -266,6 +266,7 @@ async function deleteCourse(index, id) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify({ coursename, description, price, category }),
   });
@@ -288,6 +289,7 @@ async function updateDrink(index, id) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify({ drinkname, description, price }),
   });
@@ -310,6 +312,7 @@ async function deleteDrink(index, id) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify({ drinkname, description, price }),
   });

@@ -16,6 +16,7 @@ export async function addCourse(coursename, description, price, category) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
         coursename,
@@ -45,6 +46,7 @@ export async function addDrink(drinkname, description, price) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
         drinkname,
