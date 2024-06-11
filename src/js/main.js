@@ -6,7 +6,6 @@ import { addCourse, addDrink } from "./addMenu";
 import { registerSubscriber } from "./registerSubscriber";
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(process.env.INDEX);
   //Variables
   const loginForm = document.getElementById("login-form");
   const registerForm = document.getElementById("register-form");
@@ -75,15 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const username = userNameLoginEl.value;
       const password = passwordLoginEl.value;
 
-      console.log("Hej");
-
       // Clear previous error messages
       errorMessageEl.textContent = "";
 
-      try {
-        await loginAdmin(username, password);
-      } catch (error) {
-        console.error("Error during login:", error);
+      if (!username || !password) {
+        errorMessageEl.textContent =
+          "Vänligen fyll i användarnamn och lösenord";
+      } else {
+        try {
+          await loginAdmin(username, password);
+        } catch (error) {
+          console.error("Error during login:", error);
+        }
       }
     });
   }
@@ -120,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         await addCourse(coursename, description, price, category);
-        alert("Ny rätt tillagd!");
       } catch (error) {
         console.error("Error add new course");
       }
@@ -136,7 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         await addDrink(drinkname, description, price);
-        alert("Ny dryck tillagd!");
       } catch (error) {
         console.log("Error adding new drink");
       }

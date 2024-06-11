@@ -41,7 +41,7 @@ label {
   font-weight: bold;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], select {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -59,6 +59,10 @@ input[type="submit"] {
   width: 60%;
   margin: 8px 0;
   padding: 14px 20px;
+}
+
+.delete-button {
+  margin-bottom: 60px !important;
 }
 
 input[type="submit"]:hover {
@@ -402,6 +406,16 @@ section h2 {
   margin: 30px auto 0;
 }
 
+#registerSuccess {
+  text-align: center;
+}
+
+#addCourseErrMsg, #addDrinkErrMsg {
+  text-align: center;
+  color: red;
+  margin-top: .5rem;
+}
+
 @media (width <= 1110px) {
   .add-course, .add-drink, .update-form {
     width: 80%;
@@ -430,7 +444,7 @@ section h2 {
   }
 }
 
-#errMessageReg, #errMessageLog, #errMessageFail, .errMessageSub {
+#errMessageReg, #errMessageLog, .errMessageSub {
   color: red;
   text-align: center;
   margin-top: 10px;

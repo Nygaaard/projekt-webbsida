@@ -1,14 +1,10 @@
 //Validate user
 document.addEventListener("DOMContentLoaded", async () => {
-  const apiUrl = process.env.API_URL;
+  const apiUrl = "https://projekt-server-zbif.onrender.com";
   const token = localStorage.getItem("token");
   const validateUrl = `${apiUrl}/api/protected`;
 
   if (!token) {
-    sessionStorage.setItem(
-      "failedLogin",
-      "Du måste logga in för att få tillgång till denna sida."
-    );
     window.location.href = "login.html";
     return;
   }

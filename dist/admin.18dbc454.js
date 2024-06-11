@@ -591,7 +591,6 @@ var _updateMenu = require("./updateMenu");
 var _addMenu = require("./addMenu");
 var _registerSubscriber = require("./registerSubscriber");
 document.addEventListener("DOMContentLoaded", ()=>{
-    console.log("http://localhost:1234");
     //Variables
     const loginForm = document.getElementById("login-form");
     const registerForm = document.getElementById("register-form");
@@ -642,10 +641,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         event1.preventDefault();
         const username = userNameLoginEl.value;
         const password = passwordLoginEl.value;
-        console.log("Hej");
         // Clear previous error messages
         errorMessageEl.textContent = "";
-        try {
+        if (!username || !password) errorMessageEl.textContent = "V\xe4nligen fyll i anv\xe4ndarnamn och l\xf6senord";
+        else try {
             await (0, _loginAdmin.loginAdmin)(username, password);
         } catch (error) {
             console.error("Error during login:", error);
@@ -678,7 +677,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
             const category = addCourseCategoryEl.value;
             try {
                 await (0, _addMenu.addCourse)(coursename, description, price, category);
-                alert("Ny r\xe4tt tillagd!");
             } catch (error) {
                 console.error("Error add new course");
             }
@@ -691,7 +689,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
             const price = addDrinkPriceEl.value;
             try {
                 await (0, _addMenu.addDrink)(drinkname, description, price);
-                alert("Ny dryck tillagd!");
             } catch (error) {
                 console.log("Error adding new drink");
             }
@@ -709,19 +706,17 @@ parcelHelpers.export(exports, "validateUser", ()=>validateUser);
 const apiUrl = "http://localhost:3000";
 //Variables
 const errMessageLogEl = document.getElementById("errMessageLog");
-const errmessageFailEl = document.getElementById("errMessageFail");
-const errMessage = sessionStorage.getItem("failedLogin");
-if (window.location.pathname.includes("login")) {
-    if (errMessage) errmessageFailEl.textContent = errMessage;
-}
 async function loginAdmin(username, password) {
+    //If any input field is missing
+    if (username.length < 5) {
+        errMessageLogEl.textContent = "Anv\xe4ndarnamn m\xe5ste inneh\xe5lla minst 5 tecken";
+        return;
+    }
+    if (password.length < 8) {
+        errMessageLogEl.textContent = "L\xf6senord m\xe5ste inneh\xe5lla minst 8 tecken";
+        return;
+    }
     try {
-        //If any input field is missing
-        if (!username || !password) {
-            if (!username) errMessageLogEl.textContent = "Fyll i anv\xe4ndarnamnet";
-            if (!password) errMessageLogEl.textContent = "Fyll i l\xf6senordet";
-            errMessageLogEl.textContent = "B\xe5de anv\xe4ndarnamn och l\xf6senord m\xe5ste fyllas i ";
-        }
         const url = `${apiUrl}/api/login`;
         const response = await fetch(url, {
             method: "POST",
@@ -739,14 +734,8 @@ async function loginAdmin(username, password) {
         const token = data.response.token;
         const validate = await validateUser(token);
         //Validate authorization
-        if (validate.message === "Protected route") {
-            sessionStorage.removeItem("failedLogin");
-            alert("Du \xe4r inloggad");
-            window.location.href = `admin?username=${username}`;
-        }
+        if (validate.message === "Protected route") window.location.href = `admin?username=${username}`;
     } catch (error) {
-        errmessageFailEl.textContent = "";
-        sessionStorage.removeItem("failedLogin");
         errMessageLogEl.textContent = "Fel anv\xe4ndarnamn eller l\xf6senord";
     }
 }
@@ -896,28 +885,33 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "registerAdmin", ()=>registerAdmin);
 const errMessageRegEl = document.getElementById("errMessageReg");
+const registerSuccessEl = document.getElementById("registerSuccess");
 const apiUrl = "http://localhost:3000";
 async function registerAdmin(firstname, lastname, email, username, password) {
     try {
         //Validation
         //If any input field is empty
         if (!firstname || !lastname || !email || !username || !password) {
+            registerSuccessEl.textContent = "";
             errMessageRegEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i.";
             return;
         }
         // Invalid email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
+            registerSuccessEl.textContent = "";
             errMessageRegEl.textContent = "Ogiltig email-adress.";
             return;
         }
         //Invalid username
         if (username.length < 5) {
+            registerSuccessEl.textContent = "";
             errMessageRegEl.textContent = "Anv\xe4ndarnamn m\xe5ste vara minst 5 tecken l\xe5ngt.";
             return;
         }
         //Invalid password
         if (password.length < 8) {
+            registerSuccessEl.textContent = "";
             errMessageRegEl.textContent = "L\xf6senordet m\xe5ste vara minst 8 tecken l\xe5ngt.";
             return;
         }
@@ -942,7 +936,6 @@ async function registerAdmin(firstname, lastname, email, username, password) {
         }
         //Return result
         const data = await response.json();
-        alert("Du \xe4r nu registrerad!");
         let firstnameEl = document.getElementById("firstname");
         let lastnameEl = document.getElementById("lastname");
         let emailEl = document.getElementById("email");
@@ -951,8 +944,10 @@ async function registerAdmin(firstname, lastname, email, username, password) {
         firstnameEl.value = "";
         lastnameEl.value = "";
         emailEl.value = "";
-        usernameEl = "";
+        usernameEl.value = "";
         passwordEl.value = "";
+        errMessageRegEl.textContent = "";
+        registerSuccessEl.textContent = "Du \xe4r nu registrerad";
         return data;
     } catch (error) {
         console.log("Error register new user:");
@@ -968,6 +963,7 @@ parcelHelpers.export(exports, "displayCoursesAdmin", ()=>displayCoursesAdmin);
 parcelHelpers.export(exports, "displayDrinksAdmin", ()=>displayDrinksAdmin);
 var _getData = require("./getData");
 const apiUrl = "http://localhost:3000";
+const token = localStorage.getItem("token");
 async function displayCoursesAdmin() {
     const courses = await (0, _getData.getCourses)();
     const updateFormEl = document.getElementById("update-form");
@@ -1013,10 +1009,33 @@ async function displayCoursesAdmin() {
         const categoryLabel = document.createElement("label");
         categoryLabel.setAttribute("for", categoryId);
         categoryLabel.textContent = `Kategori:`;
-        const categoryInput = document.createElement("input");
-        categoryInput.setAttribute("type", "text");
+        const categoryInput = document.createElement("select");
         categoryInput.setAttribute("id", categoryId);
         categoryInput.setAttribute("name", "categoryAdmin");
+        const categoryOptions = [
+            {
+                title: "K\xf6tt",
+                value: "meat"
+            },
+            {
+                title: "Fisk",
+                value: "fish"
+            },
+            {
+                title: "Vegetariskt",
+                value: "vegetarian"
+            },
+            {
+                title: "Veganskt",
+                value: "vegan"
+            }
+        ];
+        categoryOptions.forEach((category)=>{
+            const option = document.createElement("option");
+            option.textContent = category.title;
+            option.value = category.value;
+            categoryInput.appendChild(option);
+        });
         categoryInput.value = course.category;
         // Submit
         const updateCourseSubmitEl = document.createElement("input");
@@ -1027,18 +1046,17 @@ async function displayCoursesAdmin() {
         updateCourseSubmitEl.onclick = function() {
             event.preventDefault();
             updateCourse(index, course.id);
-            alert("R\xe4tt uppdaterad!");
         };
         //Delete
         const deleteCourseSubmitEl = document.createElement("input");
         deleteCourseSubmitEl.setAttribute("type", "submit");
         deleteCourseSubmitEl.setAttribute("id", `delete-course-${index}`);
         deleteCourseSubmitEl.value = "Radera";
+        deleteCourseSubmitEl.classList.add("delete-button");
         //Onclick for delete button
         deleteCourseSubmitEl.onclick = function() {
             event.preventDefault();
             deleteCourse(index, course.id);
-            alert("R\xe4tt raderad!");
             coursenameInput.value = "";
             descriptionInput.value = "";
             priceInput.value = "";
@@ -1117,7 +1135,6 @@ async function displayDrinksAdmin() {
         updateDrinkSubmitEl.onclick = function() {
             event.preventDefault();
             updateDrink(index, drink.id);
-            alert("Dryck uppdaterad!");
         };
         // Delete
         const deleteDrinkSubmitEl = document.createElement("input");
@@ -1128,7 +1145,6 @@ async function displayDrinksAdmin() {
         deleteDrinkSubmitEl.onclick = function() {
             event.preventDefault();
             deleteDrink(index, drink.id);
-            alert("Dryck raderad!");
             drinknameInput.value = "";
             descriptionInput.value = "";
             priceInput.value = "";
@@ -1162,7 +1178,8 @@ async function updateCourse(index, id) {
     const response = await fetch(url, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
         },
         body: JSON.stringify({
             coursename,
@@ -1171,6 +1188,7 @@ async function updateCourse(index, id) {
             category
         })
     });
+    if (response.ok) location.reload();
 }
 //Delete course
 async function deleteCourse(index, id) {
@@ -1191,6 +1209,7 @@ async function deleteCourse(index, id) {
             category
         })
     });
+    if (response.ok) location.reload();
 }
 // Update drinks
 async function updateDrink(index, id) {
@@ -1209,6 +1228,7 @@ async function updateDrink(index, id) {
             price
         })
     });
+    if (response.ok) location.reload();
 }
 // Delete drinks
 async function deleteDrink(index, id) {
@@ -1227,6 +1247,7 @@ async function deleteDrink(index, id) {
             price
         })
     });
+    if (response.ok) location.reload();
 }
 
 },{"./getData":"7kMqK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iXZ8Y":[function(require,module,exports) {
@@ -1240,8 +1261,11 @@ const addCourseErrMsgEl = document.getElementById("addCourseErrMsg");
 const addDrinkErrMsgEl = document.getElementById("addDrinkErrMsg");
 const apiUrl = "http://localhost:3000";
 async function addCourse(coursename, description, price, category) {
+    if (!coursename || !description || !price || !category) {
+        addCourseErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
+        return;
+    }
     try {
-        if (!coursename || !description || !price || !category) addCourseErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
         const url = `${apiUrl}/api/courses`;
         const response = await fetch(url, {
             method: "POST",
@@ -1255,13 +1279,17 @@ async function addCourse(coursename, description, price, category) {
                 category
             })
         });
+        if (response.ok) location.reload();
     } catch (error) {
         console.log("Error adding new course");
     }
 }
 async function addDrink(drinkname, description, price) {
+    if (!drinkname || !description || !price) {
+        addDrinkErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
+        return;
+    }
     try {
-        if (!drinkname || !description || !price) addDrinkErrMsgEl.textContent = "Alla f\xe4lt m\xe5ste fyllas i";
         const url = `${apiUrl}/api/drinks`;
         const response = await fetch(url, {
             method: "POST",
@@ -1274,6 +1302,7 @@ async function addDrink(drinkname, description, price) {
                 price
             })
         });
+        if (response.ok) location.reload();
     } catch (error) {
         console.log("Error adding new drink");
     }
@@ -1322,20 +1351,6 @@ async function registerSubscriber(firstname, lastname, email, address) {
         }
         //Return result
         const data = await response.json();
-        alert("Du prenumererar nu p\xe5 nyhetsbrevet!");
-        // let firstnameEl = document.getElementById("firstnameSub");
-        // let lastnameEl = document.getElementById("lastnameSub");
-        // let emailEl = document.getElementById("emailSub");
-        // let addressEl = document.getElementById("addressSub");
-        // if (firstnameEl && lastnameEl && emailEl && addressEl) {
-        //   // Clear input fields
-        //   firstnameEl.value = "";
-        //   lastnameEl.value = "";
-        //   emailEl.value = "";
-        //   addressEl.value = "";
-        // } else {
-        //   console.error("One or more input elements not found");
-        // }
         return data;
     } catch (error) {
         console.log(error);

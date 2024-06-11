@@ -48,7 +48,12 @@
           <br />
           <label for="addCourseCategory">Kategori:</label>
           <br />
-          <input type="text" id="addCourseCategory" name="addCourseCategory" />
+          <select id="addCourseCategory" name="addCourseCategory">
+            <option value="meat">Kött</option>
+            <option value="fish">Fisk</option>
+            <option value="vegetarian">Vegetariskt</option>
+            <option value="vegan">Veganskt</option>
+          </select>
           <br />
           <input
             type="submit"
@@ -118,6 +123,7 @@
                 class="button"
               />
             </form>
+            <div id="registerSuccess"></div>
           </section>
         </div>
       </div>
@@ -133,7 +139,7 @@
       </div>
       <div class="admin-link-container">
         <ul>
-          <li><a href="./login.html" class="admin-link">Administration</a></li>
+          <li><a href="./admin.html" class="admin-link">Administration</a></li>
         </ul>
 
         <p>Alla bilder är hämtade från Pixabay</p>

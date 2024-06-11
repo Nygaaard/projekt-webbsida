@@ -5,11 +5,11 @@ const apiUrl = process.env.API_URL;
 
 //Function for adding courses
 export async function addCourse(coursename, description, price, category) {
+  if (!coursename || !description || !price || !category) {
+    addCourseErrMsgEl.textContent = "Alla fält måste fyllas i";
+    return;
+  }
   try {
-    if (!coursename || !description || !price || !category) {
-      addCourseErrMsgEl.textContent = "Alla fält måste fyllas i";
-    }
-
     const url = `${apiUrl}/api/courses`;
 
     const response = await fetch(url, {
@@ -24,6 +24,9 @@ export async function addCourse(coursename, description, price, category) {
         category,
       }),
     });
+    if (response.ok) {
+      location.reload();
+    }
   } catch (error) {
     console.log("Error adding new course");
   }
@@ -31,11 +34,11 @@ export async function addCourse(coursename, description, price, category) {
 
 //Function for adding drinks
 export async function addDrink(drinkname, description, price) {
+  if (!drinkname || !description || !price) {
+    addDrinkErrMsgEl.textContent = "Alla fält måste fyllas i";
+    return;
+  }
   try {
-    if (!drinkname || !description || !price) {
-      addDrinkErrMsgEl.textContent = "Alla fält måste fyllas i";
-    }
-
     const url = `${apiUrl}/api/drinks`;
 
     const response = await fetch(url, {
@@ -49,6 +52,9 @@ export async function addDrink(drinkname, description, price) {
         price,
       }),
     });
+    if (response.ok) {
+      location.reload();
+    }
   } catch (error) {
     console.log("Error adding new drink");
   }

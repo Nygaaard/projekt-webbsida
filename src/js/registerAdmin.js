@@ -2,6 +2,7 @@
 
 //Variables
 const errMessageRegEl = document.getElementById("errMessageReg");
+const registerSuccessEl = document.getElementById("registerSuccess");
 
 const apiUrl = process.env.API_URL;
 
@@ -16,6 +17,7 @@ export async function registerAdmin(
     //Validation
     //If any input field is empty
     if (!firstname || !lastname || !email || !username || !password) {
+      registerSuccessEl.textContent = "";
       errMessageRegEl.textContent = "Alla fält måste fyllas i.";
       return;
     }
@@ -23,12 +25,15 @@ export async function registerAdmin(
     // Invalid email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      registerSuccessEl.textContent = "";
       errMessageRegEl.textContent = "Ogiltig email-adress.";
+
       return;
     }
 
     //Invalid username
     if (username.length < 5) {
+      registerSuccessEl.textContent = "";
       errMessageRegEl.textContent =
         "Användarnamn måste vara minst 5 tecken långt.";
       return;
@@ -36,6 +41,7 @@ export async function registerAdmin(
 
     //Invalid password
     if (password.length < 8) {
+      registerSuccessEl.textContent = "";
       errMessageRegEl.textContent =
         "Lösenordet måste vara minst 8 tecken långt.";
       return;
@@ -64,7 +70,6 @@ export async function registerAdmin(
 
     //Return result
     const data = await response.json();
-    alert("Du är nu registrerad!");
 
     let firstnameEl = document.getElementById("firstname");
     let lastnameEl = document.getElementById("lastname");
@@ -75,8 +80,11 @@ export async function registerAdmin(
     firstnameEl.value = "";
     lastnameEl.value = "";
     emailEl.value = "";
-    usernameEl = "";
+    usernameEl.value = "";
     passwordEl.value = "";
+
+    errMessageRegEl.textContent = "";
+    registerSuccessEl.textContent = "Du är nu registrerad";
 
     return data;
   } catch (error) {

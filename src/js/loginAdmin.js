@@ -4,29 +4,20 @@ const apiUrl = process.env.API_URL;
 
 //Variables
 const errMessageLogEl = document.getElementById("errMessageLog");
-const errmessageFailEl = document.getElementById("errMessageFail");
-const errMessage = sessionStorage.getItem("failedLogin");
-
-if (window.location.pathname.includes("login")) {
-  if (errMessage) {
-    errmessageFailEl.textContent = errMessage;
-  }
-}
 
 export async function loginAdmin(username, password) {
-  try {
-    //If any input field is missing
-    if (!username || !password) {
-      if (!username) {
-        errMessageLogEl.textContent = "Fyll i användarnamnet";
-      }
-      if (!password) {
-        errMessageLogEl.textContent = "Fyll i lösenordet";
-      }
-      errMessageLogEl.textContent =
-        "Både användarnamn och lösenord måste fyllas i ";
-    }
+  //If any input field is missing
 
+  if (username.length < 5) {
+    errMessageLogEl.textContent = "Användarnamn måste innehålla minst 5 tecken";
+    return;
+  }
+  if (password.length < 8) {
+    errMessageLogEl.textContent = "Lösenord måste innehålla minst 8 tecken";
+    return;
+  }
+
+  try {
     const url = `${apiUrl}/api/login`;
 
     const response = await fetch(url, {
@@ -48,14 +39,9 @@ export async function loginAdmin(username, password) {
 
     //Validate authorization
     if (validate.message === "Protected route") {
-      sessionStorage.removeItem("failedLogin");
-      alert("Du är inloggad");
-
       window.location.href = `admin?username=${username}`;
     }
   } catch (error) {
-    errmessageFailEl.textContent = "";
-    sessionStorage.removeItem("failedLogin");
     errMessageLogEl.textContent = "Fel användarnamn eller lösenord";
   }
 }

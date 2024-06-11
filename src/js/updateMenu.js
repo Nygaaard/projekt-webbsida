@@ -2,6 +2,7 @@ import { getCourses } from "./getData";
 import { getDrinks } from "./getData";
 
 const apiUrl = process.env.API_URL;
+const token = localStorage.getItem("token");
 
 // Display courses
 export async function displayCoursesAdmin() {
@@ -60,10 +61,26 @@ export async function displayCoursesAdmin() {
     categoryLabel.setAttribute("for", categoryId);
     categoryLabel.textContent = `Kategori:`;
 
-    const categoryInput = document.createElement("input");
-    categoryInput.setAttribute("type", "text");
+    const categoryInput = document.createElement("select");
     categoryInput.setAttribute("id", categoryId);
     categoryInput.setAttribute("name", "categoryAdmin");
+
+    const categoryOptions = [
+      { title: "Kött", value: "meat" },
+      { title: "Fisk", value: "fish" },
+      { title: "Vegetariskt", value: "vegetarian" },
+      { title: "Veganskt", value: "vegan" },
+    ];
+
+    categoryOptions.forEach((category) => {
+      const option = document.createElement("option");
+
+      option.textContent = category.title;
+      option.value = category.value;
+
+      categoryInput.appendChild(option);
+    });
+
     categoryInput.value = course.category;
 
     // Submit
@@ -75,7 +92,6 @@ export async function displayCoursesAdmin() {
     updateCourseSubmitEl.onclick = function () {
       event.preventDefault();
       updateCourse(index, course.id);
-      alert("Rätt uppdaterad!");
     };
 
     //Delete
@@ -83,11 +99,11 @@ export async function displayCoursesAdmin() {
     deleteCourseSubmitEl.setAttribute("type", "submit");
     deleteCourseSubmitEl.setAttribute("id", `delete-course-${index}`);
     deleteCourseSubmitEl.value = "Radera";
+    deleteCourseSubmitEl.classList.add("delete-button");
     //Onclick for delete button
     deleteCourseSubmitEl.onclick = function () {
       event.preventDefault();
       deleteCourse(index, course.id);
-      alert("Rätt raderad!");
       coursenameInput.value = "";
       descriptionInput.value = "";
       priceInput.value = "";
@@ -179,7 +195,6 @@ export async function displayDrinksAdmin() {
     updateDrinkSubmitEl.onclick = function () {
       event.preventDefault();
       updateDrink(index, drink.id);
-      alert("Dryck uppdaterad!");
     };
 
     // Delete
@@ -191,7 +206,6 @@ export async function displayDrinksAdmin() {
     deleteDrinkSubmitEl.onclick = function () {
       event.preventDefault();
       deleteDrink(index, drink.id);
-      alert("Dryck raderad!");
       drinknameInput.value = "";
       descriptionInput.value = "";
       priceInput.value = "";
@@ -230,9 +244,13 @@ async function updateCourse(index, id) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify({ coursename, description, price, category }),
   });
+  if (response.ok) {
+    location.reload();
+  }
 }
 
 //Delete course
@@ -251,6 +269,9 @@ async function deleteCourse(index, id) {
     },
     body: JSON.stringify({ coursename, description, price, category }),
   });
+  if (response.ok) {
+    location.reload();
+  }
 }
 
 // Update drinks
@@ -270,6 +291,9 @@ async function updateDrink(index, id) {
     },
     body: JSON.stringify({ drinkname, description, price }),
   });
+  if (response.ok) {
+    location.reload();
+  }
 }
 
 // Delete drinks
@@ -289,4 +313,7 @@ async function deleteDrink(index, id) {
     },
     body: JSON.stringify({ drinkname, description, price }),
   });
+  if (response.ok) {
+    location.reload();
+  }
 }
